@@ -9,7 +9,7 @@ module.exports = function(grunt) {
           outputStyle: 'expanded'
         },
         files: {
-          'css/styles.css' : 'src/scss/schmeater.scss'
+          'public/stylesheets/style.css' : 'src/scss/schmeater.scss'
         }
       },
       build: {
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          'css/styles.css' : 'src/scss/schmeater.scss'
+          'public/stylesheets/style.css' : 'src/scss/schmeater.scss'
         }
       }
     },
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'src/img',
           src: ['**/*.{png,jpg,gif}'],
-          dest: 'img/'
+          dest: 'public/images'
         }]
       }
     },
@@ -43,11 +43,11 @@ module.exports = function(grunt) {
           preserveComments: 'all'
         },
         src: 'src/js/*.js',
-        dest: 'js/script.min.js'
+        dest: 'public/javascripts/script.min.js'
       },
       build: {
         src: 'src/js/*.js',
-        dest: 'js/script.min.js'
+        dest: 'public/javascripts/script.min.js'
       }
     },
     watch: {
