@@ -57,16 +57,16 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['src/scss/**/*.scss'],
-        tsasks: ['sass:dev']
+        tasks: ['sass:dev']
       }
     }
   });
 
   //Load the plugins
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   //Register tasks
   grunt.registerTask('default', ['uglify:dev', 'sass:dev']);

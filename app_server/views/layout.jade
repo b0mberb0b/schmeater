@@ -3,5 +3,20 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Josefin+Sans:600')
   body
+    header
+      h1 Theater Schmeater
+      nav
+        ul
+          li
+            a(href='/') Home
+          li
+            a(href='/season') Season/Events
+          li
+            a(href='/support') Support
+          li
+            a(href='/press') Press Page
+          li
+            a(href='/about').right-end About
     block content
