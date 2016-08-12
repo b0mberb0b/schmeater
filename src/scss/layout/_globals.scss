@@ -1,20 +1,93 @@
-$purple: #A200FF;
-$white: #D3F5E7;
+$purple: #5a3c87;
+$lightPurple: lighten($purple, 16%);
+$green: #79b732;
+$lightGreen: lighten($green, 40%);
+$lightSatGreen: saturate($lightGreen, 30%);
+
+@mixin resetSize {
+  padding: 0;
+  margin: 0;
+}
 
 * {
   box-sizing: border-box;
 }
-
-html {
-  position: relative;
-  height: 100%;
-}
-
 body {
-  display: flex;
-  flex-direction: column;
+  @include display(flex);
+  @include flex-direction(column);
   min-height: 100vh;
-  font-family: 'Quicksand', sans-serif;
+  font-family: $lucida-grande;
+}
+header, h1, h2 {
+    font-family: 'Josefin Sans', sans-serif;
+}
+h1 {
+  font-size: 3.3em;
+}
+h2 {
+  font-size: 2.2em;
+  margin-bottom: 0;
+}
+p {
+  font-size: 1.2em;
+}
+ul {
+  @include resetSize;
+  list-style: none;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+/***********************************************************************
+                              HEADER CSS
+***********************************************************************/
+header {
+  @include display(flex);
+  @include flex-direction(column);
+  @include resetSize;
+  text-align: center;
+  background: url('../images/background.jpg') $green;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  h1 {
+    @media (min-width: 500px) {
+      font-size: 4em;
+    }
+    color: $purple;
+    @include flex(1);
+  }
+  nav {
+    background-color: $lightPurple;
+    ul {
+      li {
+        border-top: 1.5px solid white;
+        @media (min-width: 600px) {
+          display: inline-block;
+          border-left: 1.5px solid white;
+          border-top: none;
+          &:last-child {
+            border-right: 1.5px solid white;
+          }
+        }
+        a {
+          display: block;
+          padding: 15px 20px 11px;
+          font-size: 1.3em;
+          background-color: transparent;
+          transition: background-color .3s;
+          &:hover {
+            color: #fff;
+            background-color: $purple;
+          }
+          // .selected {
+          //   background-color: $purple;
+          // }
+        }
+      }
+    }
+  }
 }
 
 /***********************************************************************
@@ -22,73 +95,111 @@ body {
 ***********************************************************************/
 footer {
   text-align: center;
-  background-color: #77BCD4;
-  padding: 10px 0;
+  background-color: $green;
+  @include display(flex);
+  @include flex-direction(row);
+  .container {
+    @include align-self(center);
+    padding: 11px 15px;
+    h3 {
+      @include resetSize;
+      text-align: right;
+      font-size: 1.7em;
+      font-family: 'Josefin Sans', sans-serif;
+    }
+    p {
+      @include resetSize;
+      line-height: 1.5;
+      text-align: left;
+    }
+  }
+  small {
+    @include align-self(flex-end);
+    font-size: .7em;
+  }
+
 }
 
 /***********************************************************************
-                              HEADER CSS
+                              CONTENT CONTAINER CSS
 ***********************************************************************/
-header {
-  background: url('../images/background.jpg') $white;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  height: 225px;
-  text-align: center;
-  font-family: 'Josefin Sans', sans-serif;
 
+.pageContent {
+  @include flex(1);
+  @include align-self(center);
+}
+.flexbox {
+  @include display(flex);
+  @include flex-direction(row);
+}
+.leftNav {
+  float: left;
+  background-color: $lightGreen;
+  padding: 50px 20px 50px 100px;
+  width: 30%;
   h1 {
-    font-size: 3em;
-    @media (min-width: 500px) {
-      font-size: 4em;
-    }
-    color: $purple;
-    flex-grow: 1;
+    font-size: 2.5em;
+    text-align: right;
   }
-
-  nav {
-    background-color: #B975E0;
-
-    ul {
-      list-style: none;
-      display: block;
-      padding: 0;
-      margin: 0;
-
-      li {
+  p {
+    text-align: left;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 15px;
+  }
+  ul {
+    li a {
         display: block;
-        border-top: 1.5px solid $white;
+        background-color: white;
+        border-radius: 3px;
+        padding: 8px;
+        margin-bottom: 10px;
+        &:hover {
+          background-color: $purple;
+          color: white;
+      }
+    }
+  }
+}
+.aboutContent {
+  float: left;
+  padding: 30px 50px;
+  width: 70%;
+  max-width: 1200px;
+  ul {
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    li {
+      width: 250px;
+      margin-right: 15px;
+      margin-bottom: 15px;
+    }
+  }
+}
 
-        @media (min-width: 600px) {
-          display: inline-block;
-          border-left: 1.5px solid $white;
-          border-top: none;
-
-          &:last-child {
-            border-right: 1.5px solid $white;
-          }
-        }
-
-        a {
-          text-decoration: none;
-          color: #000;
-          display: block;
-          padding: 15px 20px 11px;
-          font-size: 1.3em;
-          transition: background-color .3s;
-          background-color: transparent;
-
-          &:hover {
-            color: #fff;
-            background-color: $purple;
-          }
-          .selected {
-            background-color: $purple;
-          }
+.pressContent {
+  float: left;
+  padding: 30px 50px;
+  width: 70%;
+  max-width: 1200px;
+  > p {
+    margin-top: 6px;
+    &:last-child {
+    font-style: italic;
+    }
+  }
+  ul {
+    @include display(flex);
+    @include flex-direction(column);
+    li {
+      margin-bottom: 15px;
+      a {
+        color: $purple;
+        &:hover {
+          text-decoration: underline;
+          color: $green;
         }
       }
     }
