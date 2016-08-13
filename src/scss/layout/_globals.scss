@@ -1,5 +1,6 @@
 $purple: #5a3c87;
 $lightPurple: lighten($purple, 16%);
+$lighterPurple: lighten($purple, 40%);
 $green: #79b732;
 $lightGreen: lighten($green, 40%);
 $lightSatGreen: saturate($lightGreen, 30%);
@@ -8,7 +9,6 @@ $lightSatGreen: saturate($lightGreen, 30%);
   padding: 0;
   margin: 0;
 }
-
 * {
   box-sizing: border-box;
 }
@@ -73,8 +73,8 @@ header {
         }
         a {
           display: block;
-          padding: 15px 20px 11px;
-          font-size: 1.3em;
+          padding: 20px 20px 16px;
+          font-size: 1.1em;
           background-color: transparent;
           transition: background-color .3s;
           &:hover {
@@ -123,50 +123,73 @@ footer {
 /***********************************************************************
                               CONTENT CONTAINER CSS
 ***********************************************************************/
-
-.pageContent {
+@mixin pageColor($color1, $color2: null) {
+    @if $color2 == null {
+      background-color: $color1;
+    } @else {
+      background: linear-gradient(90deg, $color1 50%, $color2 50%);
+    }
+}
+@mixin background {
   @include flex(1);
-  @include align-self(center);
+  width: 100%;
 }
-.flexbox {
+@mixin mainContent {
+  max-width: 1200px;
+  padding: 30px 50px;
+  background-color: white;
+}
+@mixin navButton($borderRadius) {
+  padding: 8px;
+  background-color: white;
+  border-radius: $borderRadius;
+}
+.purpleWhiteBackground {
+  @include background;
+  @include pageColor($lighterPurple, white);
+}
+.whiteGreenBackground {
+  @include background;
+  @include pageColor(white, $lightGreen);
+}
+.GreenWhiteBackground {
+  @include background;
+  @include pageColor($lightGreen, white);
+}
+.content {
   @include display(flex);
-  @include flex-direction(row);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.leftNav {
-  float: left;
+// .flexColumn {
+//   @include flex-direction(column);
+// }
+.rightNav {
   background-color: $lightGreen;
-  padding: 50px 20px 50px 100px;
-  width: 30%;
-  h1 {
-    font-size: 2.5em;
-    text-align: right;
-  }
-  p {
-    text-align: left;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 7px;
-    padding: 15px;
-  }
-  ul {
-    li a {
-        display: block;
-        background-color: white;
-        border-radius: 3px;
-        padding: 8px;
-        margin-bottom: 10px;
-        &:hover {
-          background-color: $purple;
-          color: white;
+  padding: 50px 10px 50px 20px;
+  min-width: 240px;
+    h1 {
+      font-size: 2.5em;
+    }
+    p {
+      @include navButton(7px);
+    }
+    ul {
+      width: 240px;
+      li a {
+            display: block;
+            margin-bottom: 10px;
+            @include navButton(3px);
+            &:hover {
+              background-color: $purple;
+              color: white;
       }
     }
   }
 }
-.aboutContent {
-  float: left;
-  padding: 30px 50px;
-  width: 70%;
-  max-width: 1200px;
+.scrollContent {
+  @include mainContent;
   ul {
     @include display(flex);
     @include flex-direction(row);
@@ -180,10 +203,7 @@ footer {
 }
 
 .pressContent {
-  float: left;
-  padding: 30px 50px;
-  width: 70%;
-  max-width: 1200px;
+  @include mainContent;
   > p {
     margin-top: 6px;
     &:last-child {
@@ -204,4 +224,16 @@ footer {
       }
     }
   }
+}
+@mixin halfContent($color) {
+  @include flex(1);
+  @include flex-basis(500px);
+  padding: 30px 50px;
+  background-color: $color;
+}
+.halfContent1 {
+  @include halfContent($lighterPurple)
+}
+.halfContent2 {
+  @include halfContent(white)
 }
