@@ -1,20 +1,36 @@
+//color variables
 $purple: #5a3c87;
 $lightPurple: lighten($purple, 16%);
 $lighterPurple: lighten($purple, 50%);
 $green: #79b732;
 $lightGreen: lighten($green, 40%);
 $lightSatGreen: saturate($lightGreen, 30%);
+//media width variables
+$wideWidth: 950px;
 
-@mixin resetSize {
+//extenders, because wow does flex compatibility take up room
+%resetSize {
   padding: 0;
   margin: 0;
+}
+%flex {
+  @include display(flex);
+}
+%flex-direction-column {
+  @include flex-direction(column);
+}
+%flex-grow-1 {
+  @include flex(1);
+}
+%flex-wrap {
+  @include flex-wrap(wrap);
 }
 * {
   box-sizing: border-box;
 }
 body {
-  @include display(flex);
-  @include flex-direction(column);
+  @extend %flex;
+  @extend %flex-direction-column;
   min-height: 100vh;
   font-family: $lucida-grande;
 }
@@ -32,7 +48,7 @@ p {
   font-size: 1.2em;
 }
 ul {
-  @include resetSize;
+  @extend %resetSize;
   list-style: none;
   a {
     text-decoration: none;
@@ -43,9 +59,9 @@ ul {
                               HEADER CSS
 ***********************************************************************/
 header {
-  @include display(flex);
-  @include flex-direction(column);
-  @include resetSize;
+  @extend %flex;
+  @extend %flex-direction-column;
+  @extend %resetSize;
   text-align: center;
   background: url('../images/background.jpg') $green;
   background-size: cover;
@@ -56,7 +72,7 @@ header {
       font-size: 4em;
     }
     color: $purple;
-    @include flex(1);
+    @extend %flex-grow-1;
   }
   nav {
     background-color: $lightPurple;
@@ -96,19 +112,18 @@ header {
 footer {
   text-align: center;
   background-color: $green;
-  @include display(flex);
-  @include flex-direction(row);
+  @extend %flex;
   .container {
     @include align-self(center);
     padding: 11px 15px;
     h3 {
-      @include resetSize;
+      @extend %resetSize;
       text-align: right;
       font-size: 1.7em;
       font-family: 'Josefin Sans', sans-serif;
     }
     p {
-      @include resetSize;
+      @extend %resetSize;
       line-height: 1.5;
       text-align: left;
     }
@@ -131,7 +146,7 @@ footer {
   }
 }
 .background {
-  @include flex(1);
+  @extend %flex-grow-1;
   width: 100%;
 }
 .whitePurple {
@@ -144,9 +159,8 @@ footer {
   @include pageColor($lightGreen, white);
 }
 .content {
-  @include display(flex);
-  @include flex-direction(row-reverse);
-  @include flex-wrap(wrap);
+  @extend %flex;
+  @extend %flex-wrap;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -178,7 +192,7 @@ footer {
 }
 @mixin mainContent {
   max-width: 1200px;
-  @include flex(1);
+  @extend %flex-grow-1;
   @include flex-basis(600px);
   padding: 30px 20px 30px 50px;
   background-color: white;
@@ -192,9 +206,8 @@ footer {
     margin-right: 2.5em;
   }
   ul {
-    @include display(flex);
-    @include flex-direction(row);
-    @include flex-wrap(wrap);
+    @extend %flex;
+    @extend %flex-wrap;
     li {
       width: 245px;
       margin-right: 25px;
@@ -217,8 +230,8 @@ footer {
     }
   }
   ul {
-    @include display(flex);
-    @include flex-direction(column);
+    @extend %flex;
+    @extend %flex-direction-column;
     li {
       margin-bottom: 15px;
       a {
@@ -231,79 +244,105 @@ footer {
     }
   }
 }
-@mixin halfContent($color) {
-  @include flex(1);
-  @include flex-basis(493px);
-  @include display(flex);
-  @include flex-direction(column);
-  background-color: $color;
+@mixin eventBar($screenWidth: none) {
   h1 {
-    text-align: center;
-    margin: 20px 0 10px;
-  }
-}
-.seasonPageRightHalf {
-  @include halfContent($lightGreen);
-  padding: 10px 10px 20px 30px;
-  h1 {
+    @extend %resetSize;
     font-size: 3em;
-    @include resetSize;
     &:first-child {
       line-height: 30px;
       margin-top: 20px;
       font-size: 2em;
     }
   }
-  ul li {
-    display: flex;
-    width: 100%;
-    height: 100px;
-    margin-top: 15px;
-    border-radius: 5px;
-    background-color: white;
-    .dateBox {
-      text-align: center;
-      color: white;
-      width: 70px;
-      padding: 30px 10px 0;
-      margin: 0;
-      background-color: $green;
-      h3, p {
-        @include resetSize;
-        line-height: 25px;
-      }
-    }
-    .textBox {
-      max-width: 470px;
-      width: 70%;
-      margin: 0 10px 0 20px;
-      font-size: 0.8em;
-      h3, p {
-        margin-top: 10px;
-        @media (min-width: 1300px) {
-          font-size: 1.5em;
+  ul {
+    @extend %flex;
+    @extend %flex-wrap;
+    @include justify-content(flex-start);
+    li {
+      @extend %flex-grow-1;
+      @include flex-basis(400px);
+      margin: 15px 10px 0 0;
+      a {
+        @extend %flex;
+        width: 100%;
+        height: 100px;
+        border-radius: 5px;
+        background-color: white;
+        .dateBox {
+          text-align: center;
+          color: white;
+          width: 70px;
+          padding: 30px 10px 0;
+          margin: 0;
+          background-color: $green;
+          h3, p {
+            @extend %resetSize;
+            line-height: 25px;
+          }
         }
-      }
-    }
-    a {
-      width: 80px;
-      padding: 30px 0 0;
-      margin-left: auto;
-      text-align: center;
-      font-weight: bold;
-      display: inline-block;
-      background-color: $lighterPurple;
-      border-radius: 5px;
-      border-left: double 3px $purple;
-
-      &:hover {
-        background-color: $lightPurple;
+        .textBox {
+          width: 70%;
+          margin: 0 10px 0 20px;
+          font-size: 0.8em;
+          h3, p {
+            margin-top: 10px;
+            @if($screenWidth != none) {
+              @media (min-width: $screenWidth) {
+                font-size: 1.5em;
+              }
+            }
+          }
+        }
+        span {
+          width: 80px;
+          padding: 30px 0 0;
+          margin-left: auto;
+          text-align: center;
+          font-weight: bold;
+          display: inline-block;
+          background-color: $lighterPurple;
+          border-radius: 5px;
+          border-left: double 3px $purple;
+        }
+        &:hover span {
+          background-color: $lightPurple;
+        }
       }
     }
   }
 }
+@mixin partContent($color, $position: 1) {
+  @extend %flex-grow-1;
+  @extend %flex;
+  @extend %flex-direction-column;
+  background-color: $color;
+  h1 {
+    text-align: center;
+    &:first-child {
+      margin: 20px 0 10px;
+    }
+  }
+}
+.indexUpcoming {
+  @include partContent($lightGreen);
+  @include flex-basis($wideWidth*3/4);
+  padding: 10px 0px 20px 10px;
+  @include eventBar;
+}
+.indexCalendar {
+  @include partContent(white, 2);
+  @include flex-basis($wideWidth/4);
+  padding: 10px 10px 20px 30px;
+}
+.seasonPageRightHalf {
+  @include partContent($lightGreen);
+  @include flex-basis($wideWidth/2);
+  padding: 10px 10px 20px 30px;
+  @include eventBar(1300px);
+}
 .seasonPageLeftHalf {
-  @include halfContent(white);
+  @include partContent(white);
+  @include flex-basis($wideWidth/2);
   padding: 10px 30px 20px 10px;
   > p {
     width: 500px;
@@ -350,7 +389,7 @@ footer {
         font-size: .8em;
         font-weight: bold;
         display: inline-block;
-        @include resetSize;
+        @extend %resetSize;
         background-color: $green;
         border-radius: 10px;
         border: double 3px $lightSatGreen;

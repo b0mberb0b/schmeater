@@ -404,11 +404,12 @@ textarea {
   /* 2 */
 }
 
-* {
-  box-sizing: border-box;
+ul, header, footer .container h3, footer .container p, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p, .seasonPageRightHalf h1, .seasonPageRightHalf ul li a .dateBox h3, .seasonPageRightHalf ul li a .dateBox p, .seasonPageLeftHalf ul li .textBox a {
+  padding: 0;
+  margin: 0;
 }
 
-body {
+body, header, footer, .content, .scrollContent ul, .pressContent ul, .indexUpcoming, .indexUpcoming ul, .indexUpcoming ul li a, .indexCalendar, .seasonPageRightHalf, .seasonPageRightHalf ul, .seasonPageRightHalf ul li a, .seasonPageLeftHalf {
   display: -webkit-box;
   display: -moz-box;
   display: box;
@@ -416,6 +417,9 @@ body {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+body, header, .pressContent ul, .indexUpcoming, .indexCalendar, .seasonPageRightHalf, .seasonPageLeftHalf {
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
   box-orient: vertical;
@@ -426,6 +430,33 @@ body {
   -moz-flex-direction: column;
   flex-direction: column;
   -ms-flex-direction: column;
+}
+
+header h1, .background, .scrollContent, .pressContent, .indexUpcoming, .indexUpcoming ul li, .indexCalendar, .seasonPageRightHalf, .seasonPageRightHalf ul li, .seasonPageLeftHalf {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.content, .scrollContent ul, .indexUpcoming ul, .seasonPageRightHalf ul {
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
   min-height: 100vh;
   font-family: "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
 }
@@ -444,8 +475,6 @@ p {
 }
 
 ul {
-  padding: 0;
-  margin: 0;
   list-style: none;
 }
 
@@ -458,25 +487,6 @@ ul a {
                               HEADER CSS
 ***********************************************************************/
 header {
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  box-orient: vertical;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  box-direction: normal;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-direction: column;
-  padding: 0;
-  margin: 0;
   text-align: center;
   background: url("../images/background.jpg") #79b732;
   background-size: cover;
@@ -486,13 +496,6 @@ header {
 
 header h1 {
   color: #5a3c87;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1;
-  -moz-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
 @media (min-width: 500px) {
@@ -539,23 +542,6 @@ header nav ul li a:hover {
 footer {
   text-align: center;
   background-color: #79b732;
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  box-direction: normal;
-  -webkit-flex-direction: row;
-  -moz-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-direction: row;
 }
 
 footer .container {
@@ -567,16 +553,12 @@ footer .container {
 }
 
 footer .container h3 {
-  padding: 0;
-  margin: 0;
   text-align: right;
   font-size: 1.7em;
   font-family: 'Josefin Sans', sans-serif;
 }
 
 footer .container p {
-  padding: 0;
-  margin: 0;
   line-height: 1.5;
   text-align: left;
 }
@@ -593,13 +575,6 @@ footer small {
                               CONTENT CONTAINER CSS
 ***********************************************************************/
 .background {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1;
-  -moz-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   width: 100%;
 }
 
@@ -622,30 +597,6 @@ footer small {
 }
 
 .content {
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  box-orient: horizontal;
-  -webkit-box-direction: reverse;
-  -moz-box-direction: reverse;
-  box-direction: reverse;
-  -webkit-flex-direction: row-reverse;
-  -moz-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  box-lines: multiple;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -684,13 +635,6 @@ footer small {
 
 .scrollContent {
   max-width: 1200px;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1;
-  -moz-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-basis: 600px;
   -moz-flex-basis: 600px;
   flex-basis: 600px;
@@ -705,33 +649,6 @@ footer small {
 
 .scrollContent hr {
   margin-right: 2.5em;
-}
-
-.scrollContent ul {
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  box-direction: normal;
-  -webkit-flex-direction: row;
-  -moz-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-direction: row;
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  box-lines: multiple;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .scrollContent ul li {
@@ -749,13 +666,6 @@ footer small {
 
 .pressContent {
   max-width: 1200px;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1;
-  -moz-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
   -webkit-flex-basis: 600px;
   -moz-flex-basis: 600px;
   flex-basis: 600px;
@@ -772,26 +682,6 @@ footer small {
   font-style: italic;
 }
 
-.pressContent ul {
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  box-orient: vertical;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  box-direction: normal;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-direction: column;
-}
-
 .pressContent ul li {
   margin-bottom: 15px;
 }
@@ -805,66 +695,61 @@ footer small {
   color: #79b732;
 }
 
-.seasonPageRightHalf {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1;
-  -moz-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-basis: 493px;
-  -moz-flex-basis: 493px;
-  flex-basis: 493px;
-  -ms-flex-preferred-size: 493px;
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  box-orient: vertical;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  box-direction: normal;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-direction: column;
+.indexUpcoming {
   background-color: #dcefc6;
-  padding: 10px 10px 20px 30px;
+  -webkit-flex-basis: 712.5px;
+  -moz-flex-basis: 712.5px;
+  flex-basis: 712.5px;
+  -ms-flex-preferred-size: 712.5px;
+  padding: 10px 0px 20px 10px;
 }
 
-.seasonPageRightHalf h1 {
+.indexUpcoming h1 {
   text-align: center;
+}
+
+.indexUpcoming h1:first-child {
   margin: 20px 0 10px;
 }
 
-.seasonPageRightHalf h1 {
+.indexUpcoming h1 {
   font-size: 3em;
-  padding: 0;
-  margin: 0;
 }
 
-.seasonPageRightHalf h1:first-child {
+.indexUpcoming h1:first-child {
   line-height: 30px;
   margin-top: 20px;
   font-size: 2em;
 }
 
-.seasonPageRightHalf ul li {
-  display: flex;
+.indexUpcoming ul {
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  box-pack: start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  -o-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+}
+
+.indexUpcoming ul li {
+  -webkit-flex-basis: 400px;
+  -moz-flex-basis: 400px;
+  flex-basis: 400px;
+  -ms-flex-preferred-size: 400px;
+  margin: 15px 10px 0 0;
+}
+
+.indexUpcoming ul li a {
   width: 100%;
   height: 100px;
-  margin-top: 15px;
   border-radius: 5px;
   background-color: white;
 }
 
-.seasonPageRightHalf ul li .dateBox {
+.indexUpcoming ul li a .dateBox {
   text-align: center;
   color: white;
   width: 70px;
@@ -873,30 +758,21 @@ footer small {
   background-color: #79b732;
 }
 
-.seasonPageRightHalf ul li .dateBox h3, .seasonPageRightHalf ul li .dateBox p {
-  padding: 0;
-  margin: 0;
+.indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p {
   line-height: 25px;
 }
 
-.seasonPageRightHalf ul li .textBox {
-  max-width: 470px;
+.indexUpcoming ul li a .textBox {
   width: 70%;
   margin: 0 10px 0 20px;
   font-size: 0.8em;
 }
 
-.seasonPageRightHalf ul li .textBox h3, .seasonPageRightHalf ul li .textBox p {
+.indexUpcoming ul li a .textBox h3, .indexUpcoming ul li a .textBox p {
   margin-top: 10px;
 }
 
-@media (min-width: 1300px) {
-  .seasonPageRightHalf ul li .textBox h3, .seasonPageRightHalf ul li .textBox p {
-    font-size: 1.5em;
-  }
-}
-
-.seasonPageRightHalf ul li a {
+.indexUpcoming ul li a span {
   width: 80px;
   padding: 30px 0 0;
   margin-left: auto;
@@ -908,45 +784,140 @@ footer small {
   border-left: double 3px #5a3c87;
 }
 
-.seasonPageRightHalf ul li a:hover {
+.indexUpcoming ul li a:hover span {
+  background-color: #815db7;
+}
+
+.indexCalendar {
+  background-color: white;
+  -webkit-flex-basis: 237.5px;
+  -moz-flex-basis: 237.5px;
+  flex-basis: 237.5px;
+  -ms-flex-preferred-size: 237.5px;
+  padding: 10px 10px 20px 30px;
+}
+
+.indexCalendar h1 {
+  text-align: center;
+}
+
+.indexCalendar h1:first-child {
+  margin: 20px 0 10px;
+}
+
+.seasonPageRightHalf {
+  background-color: #dcefc6;
+  -webkit-flex-basis: 475px;
+  -moz-flex-basis: 475px;
+  flex-basis: 475px;
+  -ms-flex-preferred-size: 475px;
+  padding: 10px 10px 20px 30px;
+}
+
+.seasonPageRightHalf h1 {
+  text-align: center;
+}
+
+.seasonPageRightHalf h1:first-child {
+  margin: 20px 0 10px;
+}
+
+.seasonPageRightHalf h1 {
+  font-size: 3em;
+}
+
+.seasonPageRightHalf h1:first-child {
+  line-height: 30px;
+  margin-top: 20px;
+  font-size: 2em;
+}
+
+.seasonPageRightHalf ul {
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  box-pack: start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  -o-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+}
+
+.seasonPageRightHalf ul li {
+  -webkit-flex-basis: 400px;
+  -moz-flex-basis: 400px;
+  flex-basis: 400px;
+  -ms-flex-preferred-size: 400px;
+  margin: 15px 10px 0 0;
+}
+
+.seasonPageRightHalf ul li a {
+  width: 100%;
+  height: 100px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.seasonPageRightHalf ul li a .dateBox {
+  text-align: center;
+  color: white;
+  width: 70px;
+  padding: 30px 10px 0;
+  margin: 0;
+  background-color: #79b732;
+}
+
+.seasonPageRightHalf ul li a .dateBox h3, .seasonPageRightHalf ul li a .dateBox p {
+  line-height: 25px;
+}
+
+.seasonPageRightHalf ul li a .textBox {
+  width: 70%;
+  margin: 0 10px 0 20px;
+  font-size: 0.8em;
+}
+
+.seasonPageRightHalf ul li a .textBox h3, .seasonPageRightHalf ul li a .textBox p {
+  margin-top: 10px;
+}
+
+@media (min-width: 1300px) {
+  .seasonPageRightHalf ul li a .textBox h3, .seasonPageRightHalf ul li a .textBox p {
+    font-size: 1.5em;
+  }
+}
+
+.seasonPageRightHalf ul li a span {
+  width: 80px;
+  padding: 30px 0 0;
+  margin-left: auto;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #dfd5ed;
+  border-radius: 5px;
+  border-left: double 3px #5a3c87;
+}
+
+.seasonPageRightHalf ul li a:hover span {
   background-color: #815db7;
 }
 
 .seasonPageLeftHalf {
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1;
-  -moz-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-basis: 493px;
-  -moz-flex-basis: 493px;
-  flex-basis: 493px;
-  -ms-flex-preferred-size: 493px;
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  box-orient: vertical;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  box-direction: normal;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-direction: column;
   background-color: white;
+  -webkit-flex-basis: 475px;
+  -moz-flex-basis: 475px;
+  flex-basis: 475px;
+  -ms-flex-preferred-size: 475px;
   padding: 10px 30px 20px 10px;
 }
 
 .seasonPageLeftHalf h1 {
   text-align: center;
+}
+
+.seasonPageLeftHalf h1:first-child {
   margin: 20px 0 10px;
 }
 
@@ -1005,8 +976,6 @@ footer small {
   font-size: .8em;
   font-weight: bold;
   display: inline-block;
-  padding: 0;
-  margin: 0;
   background-color: #79b732;
   border-radius: 10px;
   border: double 3px #ddfabb;
