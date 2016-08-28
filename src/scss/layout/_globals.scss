@@ -1,6 +1,6 @@
 $purple: #5a3c87;
 $lightPurple: lighten($purple, 16%);
-$lighterPurple: lighten($purple, 40%);
+$lighterPurple: lighten($purple, 50%);
 $green: #79b732;
 $lightGreen: lighten($green, 40%);
 $lightSatGreen: saturate($lightGreen, 30%);
@@ -18,9 +18,9 @@ body {
   min-height: 100vh;
   font-family: $lucida-grande;
 }
-header, h1, h2 {
-    font-family: 'Josefin Sans', sans-serif;
-}
+// header, h1, h2 {
+//     font-family: 'Josefin Sans', sans-serif;
+// }
 h1 {
   font-size: 3.3em;
 }
@@ -124,63 +124,51 @@ footer {
                               CONTENT CONTAINER CSS
 ***********************************************************************/
 @mixin pageColor($color1, $color2: null) {
-    @if $color2 == null {
-      background-color: $color1;
-    } @else {
+  @if $color2 != null {
+    @media (min-width: 1004px) {
       background: linear-gradient(90deg, $color1 50%, $color2 50%);
     }
+  }
 }
-@mixin background {
+.background {
   @include flex(1);
   width: 100%;
 }
-@mixin mainContent {
-  max-width: 1200px;
-  padding: 30px 50px;
-  background-color: white;
+.whitePurple {
+  @include pageColor(white, $lighterPurple);
 }
-@mixin navButton($borderRadius) {
-  padding: 8px;
-  background-color: white;
-  border-radius: $borderRadius;
-}
-.purpleWhiteBackground {
-  @include background;
-  @include pageColor($lighterPurple, white);
-}
-.whiteGreenBackground {
-  @include background;
+.whiteGreen {
   @include pageColor(white, $lightGreen);
 }
-.GreenWhiteBackground {
-  @include background;
+.greenWhite {
   @include pageColor($lightGreen, white);
 }
 .content {
   @include display(flex);
+  @include flex-direction(row-reverse);
+  @include flex-wrap(wrap);
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
-// .flexColumn {
-//   @include flex-direction(column);
-// }
+.wider {
+  max-width: 1500px;
+}
 .rightNav {
   background-color: $lightGreen;
   padding: 50px 10px 50px 20px;
-  min-width: 240px;
+  min-width: 280px;
     h1 {
       font-size: 2.5em;
     }
-    p {
-      @include navButton(7px);
-    }
     ul {
-      width: 240px;
+      width: 230px;
       li a {
             display: block;
             margin-bottom: 10px;
-            @include navButton(3px);
+            padding: 8px;
+            background-color: white;
+            border-radius: 3px;
             &:hover {
               background-color: $purple;
               color: white;
@@ -188,20 +176,38 @@ footer {
     }
   }
 }
+@mixin mainContent {
+  max-width: 1200px;
+  @include flex(1);
+  @include flex-basis(600px);
+  padding: 30px 20px 30px 50px;
+  background-color: white;
+}
 .scrollContent {
   @include mainContent;
+  p {
+    margin-right: 30px;
+  }
+  hr {
+    margin-right: 2.5em;
+  }
   ul {
     @include display(flex);
     @include flex-direction(row);
     @include flex-wrap(wrap);
     li {
-      width: 250px;
-      margin-right: 15px;
+      width: 245px;
+      margin-right: 25px;
       margin-bottom: 15px;
+      @media (min-width: 1135px) {
+        &:nth-child(3n) {
+          width: 200px;
+          margin-right: 0;
+        }
+      }
     }
   }
 }
-
 .pressContent {
   @include mainContent;
   > p {
@@ -227,13 +233,137 @@ footer {
 }
 @mixin halfContent($color) {
   @include flex(1);
-  @include flex-basis(500px);
-  padding: 30px 50px;
+  @include flex-basis(493px);
+  @include display(flex);
+  @include flex-direction(column);
   background-color: $color;
+  h1 {
+    text-align: center;
+    margin: 20px 0 10px;
+  }
 }
-.halfContent1 {
-  @include halfContent($lighterPurple)
+.seasonPageRightHalf {
+  @include halfContent($lightGreen);
+  padding: 10px 10px 20px 30px;
+  h1 {
+    font-size: 3em;
+    @include resetSize;
+    &:first-child {
+      line-height: 30px;
+      margin-top: 20px;
+      font-size: 2em;
+    }
+  }
+  ul li {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: white;
+    .dateBox {
+      text-align: center;
+      color: white;
+      width: 70px;
+      padding: 30px 10px 0;
+      margin: 0;
+      background-color: $green;
+      h3, p {
+        @include resetSize;
+        line-height: 25px;
+      }
+    }
+    .textBox {
+      max-width: 470px;
+      width: 70%;
+      margin: 0 10px 0 20px;
+      font-size: 0.8em;
+      h3, p {
+        margin-top: 10px;
+        @media (min-width: 1300px) {
+          font-size: 1.5em;
+        }
+      }
+    }
+    a {
+      width: 80px;
+      padding: 30px 0 0;
+      margin-left: auto;
+      text-align: center;
+      font-weight: bold;
+      display: inline-block;
+      background-color: $lighterPurple;
+      border-radius: 5px;
+      border-left: double 3px $purple;
+
+      &:hover {
+        background-color: $lightPurple;
+      }
+    }
+  }
 }
-.halfContent2 {
-  @include halfContent(white)
+.seasonPageLeftHalf {
+  @include halfContent(white);
+  padding: 10px 30px 20px 10px;
+  > p {
+    width: 500px;
+    padding: 10px;
+    margin: 20px auto 10px;
+    border: dotted 3px gray;
+    text-align: center;
+  }
+  ul li {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    margin-top: 15px;
+    border: dotted 3px $green;
+    border-radius: 5px;
+    background-color: $lightSatGreen;
+    .image {
+      flex-grow: 1;
+      width: 50%;
+      height: 175px;
+      margin: 10px 0 6px 15px;
+      box-shadow: 0 0 3px 4px $lightSatGreen inset;
+      background-size: cover;
+      background-position: center center;
+    }
+    .image1 {
+      background-image: url(../images/1.jpg);
+    }
+    .image2 {
+      background-image: url(../images/2.jpg);
+    }
+    .image3 {
+      background-image: url(../images/3.jpg);
+    }
+    .textBox {
+      flex-grow: 1;
+      width: 42%;
+      text-align: center;
+      margin-right: 10px;
+      p {
+        margin: 25px 0 30px;
+      }
+      a {
+        font-size: .8em;
+        font-weight: bold;
+        display: inline-block;
+        @include resetSize;
+        background-color: $green;
+        border-radius: 10px;
+        border: double 3px $lightSatGreen;
+        padding: 10px 0;
+        width: 80px;
+        &:last-child {
+          margin-left: 10px;
+        }
+        &:hover {
+          background-color: white;
+          border: double 3px $green;
+        }
+      }
+    }
+  }
 }
