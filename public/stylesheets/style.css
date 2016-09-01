@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -404,12 +405,287 @@ textarea {
   /* 2 */
 }
 
-ul, header, footer .container h3, footer .container p, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p, .seasonPageRightHalf h1, .seasonPageRightHalf ul li a .dateBox h3, .seasonPageRightHalf ul li a .dateBox p, .seasonPageLeftHalf ul li .textBox a {
+/* Slider */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-list:focus {
+  outline: none;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+}
+
+.slick-track:before, .slick-track:after {
+  content: "";
+  display: table;
+}
+
+.slick-track:after {
+  clear: both;
+}
+
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  display: none;
+}
+
+[dir="rtl"] .slick-slide {
+  float: right;
+}
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
+/* Slider */
+.slick-loading .slick-list {
+  background: #fff url("./ajax-loader.gif") center center no-repeat;
+}
+
+/* Icons */
+@font-face {
+  font-family: "slick";
+  src: url("./fonts/slick.eot");
+  src: url("./fonts/slick.eot?#iefix") format("embedded-opentype"), url("./fonts/slick.woff") format("woff"), url("./fonts/slick.ttf") format("truetype"), url("./fonts/slick.svg#slick") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Arrows */
+.slick-prev,
+.slick-next {
+  position: absolute;
+  display: block;
+  height: 20px;
+  width: 20px;
+  line-height: 0px;
+  font-size: 0px;
+  cursor: pointer;
+  background: transparent;
+  color: transparent;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+.slick-prev:hover, .slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  outline: none;
+  background: transparent;
+  color: transparent;
+}
+
+.slick-prev:hover:before, .slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before {
+  opacity: 1;
+}
+
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before {
+  opacity: 0.25;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: "slick";
+  font-size: 20px;
+  line-height: 1;
+  color: white;
+  opacity: 0.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev {
+  left: -25px;
+}
+
+[dir="rtl"] .slick-prev {
+  left: auto;
+  right: -25px;
+}
+
+.slick-prev:before {
+  content: "←";
+}
+
+[dir="rtl"] .slick-prev:before {
+  content: "→";
+}
+
+.slick-next {
+  right: -25px;
+}
+
+[dir="rtl"] .slick-next {
+  left: -25px;
+  right: auto;
+}
+
+.slick-next:before {
+  content: "→";
+}
+
+[dir="rtl"] .slick-next:before {
+  content: "←";
+}
+
+/* Dots */
+.slick-dotted.slick-slider {
+  margin-bottom: 30px;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: -25px;
+  list-style: none;
+  display: block;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.slick-dots li {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.slick-dots li button {
+  border: 0;
+  background: transparent;
+  display: block;
+  height: 20px;
+  width: 20px;
+  outline: none;
+  line-height: 0px;
+  font-size: 0px;
+  color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.slick-dots li button:hover, .slick-dots li button:focus {
+  outline: none;
+}
+
+.slick-dots li button:hover:before, .slick-dots li button:focus:before {
+  opacity: 1;
+}
+
+.slick-dots li button:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "•";
+  width: 20px;
+  height: 20px;
+  font-family: "slick";
+  font-size: 6px;
+  line-height: 20px;
+  text-align: center;
+  color: black;
+  opacity: 0.25;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-dots li.slick-active button:before {
+  color: black;
+  opacity: 0.75;
+}
+
+/***********************************************************************
+                  EXTENDERS, cuz wow flex takes up room
+***********************************************************************/
+ul, header, header .navbar, header .navbar h3, footer .container h3, footer .container p, .rightGreen .navbar, .rightGreen .navbar h3, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p, .seasonPageRightHalf h1, .seasonPageRightHalf ul li a .dateBox h3, .seasonPageRightHalf ul li a .dateBox p, .seasonPageLeftHalf ul li .textBox a {
   padding: 0;
   margin: 0;
 }
 
-body, header, footer, .content, .scrollContent ul, .pressContent ul, .indexUpcoming, .indexUpcoming ul, .indexUpcoming ul li a, .indexCalendar, .seasonPageRightHalf, .seasonPageRightHalf ul, .seasonPageRightHalf ul li a, .seasonPageLeftHalf {
+body, header, footer, .content, .scrollContent ul, .pressContent ul, .indexUpcoming, .indexUpcoming ul, .indexUpcoming ul li a, .indexCalendar, .indexGallery, .indexPress, .indexOther, .seasonPageRightHalf, .seasonPageRightHalf ul, .seasonPageRightHalf ul li a, .seasonPageLeftHalf {
   display: -webkit-box;
   display: -moz-box;
   display: box;
@@ -419,7 +695,7 @@ body, header, footer, .content, .scrollContent ul, .pressContent ul, .indexUpcom
   display: flex;
 }
 
-body, header, .pressContent ul, .indexUpcoming, .indexCalendar, .seasonPageRightHalf, .seasonPageLeftHalf {
+body, header, .pressContent ul, .indexUpcoming, .indexCalendar, .indexGallery, .indexPress, .indexOther, .seasonPageRightHalf, .seasonPageLeftHalf {
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
   box-orient: vertical;
@@ -432,7 +708,7 @@ body, header, .pressContent ul, .indexUpcoming, .indexCalendar, .seasonPageRight
   -ms-flex-direction: column;
 }
 
-header h1, .background, .scrollContent, .pressContent, .indexUpcoming, .indexUpcoming ul li, .indexCalendar, .seasonPageRightHalf, .seasonPageRightHalf ul li, .seasonPageLeftHalf {
+header .titleBox h1, .background, .scrollContent, .pressContent, .indexUpcoming, .indexUpcoming ul li, .indexCalendar, .indexGallery, .indexPress, .indexOther, .seasonPageRightHalf, .seasonPageRightHalf ul li, .seasonPageLeftHalf {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
@@ -452,6 +728,9 @@ header h1, .background, .scrollContent, .pressContent, .indexUpcoming, .indexUpc
   flex-wrap: wrap;
 }
 
+/***********************************************************************
+                      OVERALL STYLISTIC CHANGES
+***********************************************************************/
 * {
   box-sizing: border-box;
 }
@@ -483,47 +762,82 @@ ul a {
   color: black;
 }
 
+ul a:hover {
+  text-decoration: none;
+  color: black;
+}
+
 /***********************************************************************
                               HEADER CSS
 ***********************************************************************/
 header {
   text-align: center;
-  background: url("../images/background.jpg") #79b732;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
 }
 
-header h1 {
+header .titleBox {
+  background-color: #79b732;
+}
+
+header .titleBox h1 {
   color: #5a3c87;
 }
 
 @media (min-width: 500px) {
-  header h1 {
+  header .titleBox h1 {
     font-size: 4em;
   }
 }
 
-header nav {
+header .navbar {
   background-color: #815db7;
 }
 
-header nav ul li {
-  border-top: 1.5px solid white;
+@media (min-width: 615px) {
+  header .navbar .collapse {
+    display: block;
+  }
+  header .navbar .navbar-header {
+    display: none;
+  }
 }
 
-@media (min-width: 600px) {
-  header nav ul li {
+header .navbar .navbar-toggle:hover {
+  background-color: #5a3c87;
+}
+
+header .navbar .navbar-toggle .icon-bar {
+  background-color: #d9d9d9;
+}
+
+header .navbar h3 {
+  color: white;
+  text-align: left;
+  padding: 10px 0 0 17px;
+  font-size: 1.3em;
+}
+
+header .navbar h3 span {
+  font-size: 1.4em;
+}
+
+header .navbar ul li:nth-child(1n+2) {
+  border-top: 1px solid white;
+}
+
+@media (min-width: 615px) {
+  header .navbar ul li {
     display: inline-block;
-    border-left: 1.5px solid white;
+    border-left: 1px solid white;
+  }
+  header .navbar ul li:nth-child(1n+2) {
     border-top: none;
   }
-  header nav ul li:last-child {
-    border-right: 1.5px solid white;
+  header .navbar ul li:last-child {
+    border-right: 1px solid white;
   }
 }
 
-header nav ul li a {
+header .navbar ul li a {
   display: block;
   padding: 20px 20px 16px;
   font-size: 1.1em;
@@ -531,7 +845,7 @@ header nav ul li a {
   transition: background-color .3s;
 }
 
-header nav ul li a:hover {
+header .navbar ul li a:hover {
   color: #fff;
   background-color: #5a3c87;
 }
@@ -572,7 +886,7 @@ footer small {
 }
 
 /***********************************************************************
-                              CONTENT CONTAINER CSS
+                  BACKGROUND AND CENTERING CONTAINERS
 ***********************************************************************/
 .background {
   width: 100%;
@@ -597,48 +911,133 @@ footer small {
 }
 
 .content {
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-direction: column;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .content {
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row;
+  }
 }
 
 .wider {
   max-width: 1500px;
 }
 
-.rightNav {
+/***********************************************************************
+                  ABOUT, SUPPORT, and PRESS PAGES
+***********************************************************************/
+.rightGreen {
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .rightGreen {
+    order: 1;
+    margin-bottom: -500px;
+  }
+}
+
+.rightGreen .navbar {
   background-color: #dcefc6;
-  padding: 50px 10px 50px 20px;
-  min-width: 280px;
+  border: none;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
 }
 
-.rightNav h1 {
-  font-size: 2.5em;
+@media (min-width: 615px) {
+  .rightGreen .navbar .collapse {
+    display: block;
+  }
+  .rightGreen .navbar .navbar-header {
+    display: none;
+  }
 }
 
-.rightNav ul {
-  width: 230px;
+.rightGreen .navbar .navbar-toggle {
+  border-color: #666666;
 }
 
-.rightNav ul li a {
-  display: block;
-  margin-bottom: 10px;
-  padding: 8px;
+.rightGreen .navbar .navbar-toggle:hover {
   background-color: white;
-  border-radius: 3px;
 }
 
-.rightNav ul li a:hover {
-  background-color: #5a3c87;
-  color: white;
+.rightGreen .navbar .navbar-toggle .icon-bar {
+  background-color: #595959;
+}
+
+.rightGreen .navbar h3 {
+  color: black;
+  text-align: left;
+  padding: 10px 0 0 17px;
+  font-size: 1.3em;
+}
+
+.rightGreen .navbar h3 span {
+  font-size: 1.4em;
+}
+
+.rightGreen .navbar h1 {
+  display: none;
+}
+
+.rightGreen .navbar ul li {
+  text-align: center;
+}
+
+.rightGreen .navbar ul li:nth-child(1n+2) {
+  border-top: solid 1.5px black;
+}
+
+@media (min-width: 615px) {
+  .rightGreen .navbar ul li {
+    display: inline-block;
+    border-left: 1.5px solid white;
+  }
+  .rightGreen .navbar ul li:nth-child(1n+2) {
+    border-top: none;
+  }
+  .rightGreen .navbar ul li:last-child {
+    border-right: 1.5px solid white;
+  }
+}
+
+.rightGreen .navbar ul li a {
+  display: block;
+  padding: 20px 20px 16px;
+  font-size: 1.1em;
+  background-color: transparent;
+  transition: background-color .3s;
+}
+
+.rightGreen .navbar ul li a:hover {
+  color: #fff;
+  background-color: #79b732;
 }
 
 .scrollContent {
   max-width: 1200px;
-  -webkit-flex-basis: 600px;
-  -moz-flex-basis: 600px;
-  flex-basis: 600px;
-  -ms-flex-preferred-size: 600px;
   padding: 30px 20px 30px 50px;
   background-color: white;
 }
@@ -666,10 +1065,6 @@ footer small {
 
 .pressContent {
   max-width: 1200px;
-  -webkit-flex-basis: 600px;
-  -moz-flex-basis: 600px;
-  flex-basis: 600px;
-  -ms-flex-preferred-size: 600px;
   padding: 30px 20px 30px 50px;
   background-color: white;
 }
@@ -697,10 +1092,10 @@ footer small {
 
 .indexUpcoming {
   background-color: #dcefc6;
-  -webkit-flex-basis: 712.5px;
-  -moz-flex-basis: 712.5px;
-  flex-basis: 712.5px;
-  -ms-flex-preferred-size: 712.5px;
+  -webkit-flex-basis: 855px;
+  -moz-flex-basis: 855px;
+  flex-basis: 855px;
+  -ms-flex-preferred-size: 855px;
   padding: 10px 0px 20px 10px;
 }
 
@@ -790,11 +1185,11 @@ footer small {
 
 .indexCalendar {
   background-color: white;
-  -webkit-flex-basis: 237.5px;
-  -moz-flex-basis: 237.5px;
-  flex-basis: 237.5px;
-  -ms-flex-preferred-size: 237.5px;
   padding: 10px 10px 20px 30px;
+  -webkit-flex-basis: 190px;
+  -moz-flex-basis: 190px;
+  flex-basis: 190px;
+  -ms-flex-preferred-size: 190px;
 }
 
 .indexCalendar h1 {
@@ -802,6 +1197,57 @@ footer small {
 }
 
 .indexCalendar h1:first-child {
+  margin: 20px 0 10px;
+}
+
+.indexGallery {
+  background-color: white;
+  -webkit-flex-basis: 237.5px;
+  -moz-flex-basis: 237.5px;
+  flex-basis: 237.5px;
+  -ms-flex-preferred-size: 237.5px;
+  padding: 10px 30px 20px 10px;
+}
+
+.indexGallery h1 {
+  text-align: center;
+}
+
+.indexGallery h1:first-child {
+  margin: 20px 0 10px;
+}
+
+.indexPress {
+  background-color: #dcefc6;
+  -webkit-flex-basis: 237.5px;
+  -moz-flex-basis: 237.5px;
+  flex-basis: 237.5px;
+  -ms-flex-preferred-size: 237.5px;
+  padding: 10px 10px 20px 10px;
+}
+
+.indexPress h1 {
+  text-align: center;
+}
+
+.indexPress h1:first-child {
+  margin: 20px 0 10px;
+}
+
+.indexOther {
+  background-color: white;
+  -webkit-flex-basis: 237.5px;
+  -moz-flex-basis: 237.5px;
+  flex-basis: 237.5px;
+  -ms-flex-preferred-size: 237.5px;
+  padding: 10px 10px 20px 30px;
+}
+
+.indexOther h1 {
+  text-align: center;
+}
+
+.indexOther h1:first-child {
   margin: 20px 0 10px;
 }
 

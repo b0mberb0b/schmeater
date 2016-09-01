@@ -1,0 +1,349 @@
+/***********************************************************************
+                  BACKGROUND AND CENTERING CONTAINERS
+***********************************************************************/
+@mixin pageColor($color1, $color2: null) {
+  @if $color2 != null {
+    @media (min-width: 1004px) {
+      background: linear-gradient(90deg, $color1 50%, $color2 50%);
+    }
+  }
+}
+.background {
+  @extend %flex-grow-1;
+  width: 100%;
+}
+.whitePurple {
+  @include pageColor(white, $lighterPurple);
+}
+.whiteGreen {
+  @include pageColor(white, $lightGreen);
+}
+.greenWhite {
+  @include pageColor($lightGreen, white);
+}
+.content {
+  @extend %flex;
+  @extend %flex-wrap;
+  @include flex-direction(column);
+  @media (min-width: $medium-size) {
+    @include flex-direction(row);
+  }
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.wider {
+  max-width: 1500px;
+}
+
+/***********************************************************************
+                  ABOUT, SUPPORT, and PRESS PAGES
+***********************************************************************/
+.rightGreen {
+  order: -1;
+  // background-color: $lightGreen;
+  @media (min-width: $medium-size) {
+    order: 1;
+    margin-bottom: -500px;
+    // padding: 50px 10px 50px 20px;
+    // min-width: 280px;
+  }
+  .navbar {
+    background-color: $lightGreen;
+    border: none;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+    @extend %resetSize;
+    @media (min-width: $small-size) {
+      .collapse {
+          display: block;
+      }
+      .navbar-header {
+          display: none;
+      }
+    }
+    .navbar-toggle {
+      border-color: lighten(black, 40%);
+      &:hover {
+        background-color: white;
+      }
+      .icon-bar {
+        background-color: lighten(black, 35%);
+      }
+    }
+    h3 {
+      @extend %resetSize;
+      color: black;
+      text-align: left;
+      padding: 10px 0 0 17px;
+      font-size: 1.3em;
+      span {
+        font-size: 1.4em;
+      }
+    }
+    h1 {
+      display: none;
+    }
+    ul {
+      li {
+        text-align: center;
+        &:nth-child(1n+2) {
+          border-top: solid 1.5px black;
+        }
+        @media (min-width: $small-size) {
+          display: inline-block;
+          border-left: 1.5px solid white;
+          &:nth-child(1n+2) {
+            border-top: none;
+          }
+          &:last-child {
+            border-right: 1.5px solid white;
+          }
+        }
+        a {
+          display: block;
+          padding: 20px 20px 16px;
+          font-size: 1.1em;
+          background-color: transparent;
+          transition: background-color .3s;
+          &:hover {
+            color: #fff;
+            background-color: $green;
+          }
+        }
+      }
+    }
+  }
+}
+//mixin to create the large white text area on all 3 pages
+@mixin mainContent {
+  max-width: 1200px;
+  @extend %flex-grow-1;
+  padding: 30px 20px 30px 50px;
+  background-color: white;
+}
+//used on Support and About pages for in-page links
+.scrollContent {
+  @include mainContent;
+  p {
+    margin-right: 30px;
+  }
+  hr {
+    margin-right: 2.5em;
+  }
+  ul {
+    @extend %flex;
+    @extend %flex-wrap;
+    li {
+      width: 245px;
+      margin-right: 25px;
+      margin-bottom: 15px;
+      @media (min-width: 1135px) {
+        &:nth-child(3n) {
+          width: 200px;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+.pressContent {
+  @include mainContent;
+  > p {
+    margin-top: 6px;
+    &:last-child {
+    font-style: italic;
+    }
+  }
+  ul {
+    @extend %flex;
+    @extend %flex-direction-column;
+    li {
+      margin-bottom: 15px;
+      a {
+        color: $purple;
+        &:hover {
+          text-decoration: underline;
+          color: $green;
+        }
+      }
+    }
+  }
+}
+@mixin eventBar($screenWidth: none) {
+  h1 {
+    @extend %resetSize;
+    font-size: 3em;
+    &:first-child {
+      line-height: 30px;
+      margin-top: 20px;
+      font-size: 2em;
+    }
+  }
+  ul {
+    @extend %flex;
+    @extend %flex-wrap;
+    @include justify-content(flex-start);
+    li {
+      @extend %flex-grow-1;
+      @include flex-basis(400px);
+      margin: 15px 10px 0 0;
+      a {
+        @extend %flex;
+        width: 100%;
+        height: 100px;
+        border-radius: 5px;
+        background-color: white;
+        .dateBox {
+          text-align: center;
+          color: white;
+          width: 70px;
+          padding: 30px 10px 0;
+          margin: 0;
+          background-color: $green;
+          h3, p {
+            @extend %resetSize;
+            line-height: 25px;
+          }
+        }
+        .textBox {
+          width: 70%;
+          margin: 0 10px 0 20px;
+          font-size: 0.8em;
+          h3, p {
+            margin-top: 10px;
+            @if($screenWidth != none) {
+              @media (min-width: $screenWidth) {
+                font-size: 1.5em;
+              }
+            }
+          }
+        }
+        span {
+          width: 80px;
+          padding: 30px 0 0;
+          margin-left: auto;
+          text-align: center;
+          font-weight: bold;
+          display: inline-block;
+          background-color: $lighterPurple;
+          border-radius: 5px;
+          border-left: double 3px $purple;
+        }
+        &:hover span {
+          background-color: $lightPurple;
+        }
+      }
+    }
+  }
+}
+@mixin partContent($color, $position: 1) {
+  @extend %flex-grow-1;
+  @extend %flex;
+  @extend %flex-direction-column;
+  background-color: $color;
+  h1 {
+    text-align: center;
+    &:first-child {
+      margin: 20px 0 10px;
+    }
+  }
+}
+.indexUpcoming {
+  @include partContent($lightGreen);
+  @include flex-basis($wideWidth*9/10);
+  padding: 10px 0px 20px 10px;
+  @include eventBar;
+}
+.indexCalendar {
+  @include partContent(white, 2);
+  padding: 10px 10px 20px 30px;
+  @include flex-basis($wideWidth/5);
+}
+.indexGallery {
+  @include partContent(white, 3);
+  @include flex-basis($wideWidth/4);
+  padding: 10px 30px 20px 10px;
+}
+.indexPress {
+  @include partContent($lightGreen, 4);
+  @include flex-basis($wideWidth/4);
+  padding: 10px 10px 20px 10px;
+}
+.indexOther {
+  @include partContent(white, 5);
+  @include flex-basis($wideWidth/4);
+  padding: 10px 10px 20px 30px;
+}
+.seasonPageRightHalf {
+  @include partContent($lightGreen);
+  @include flex-basis($wideWidth/2);
+  padding: 10px 10px 20px 30px;
+  @include eventBar(1300px);
+}
+.seasonPageLeftHalf {
+  @include partContent(white);
+  @include flex-basis($wideWidth/2);
+  padding: 10px 30px 20px 10px;
+  > p {
+    width: 500px;
+    padding: 10px;
+    margin: 20px auto 10px;
+    border: dotted 3px gray;
+    text-align: center;
+  }
+  ul li {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    margin-top: 15px;
+    border: dotted 3px $green;
+    border-radius: 5px;
+    background-color: $lightSatGreen;
+    .image {
+      flex-grow: 1;
+      width: 50%;
+      height: 175px;
+      margin: 10px 0 6px 15px;
+      box-shadow: 0 0 3px 4px $lightSatGreen inset;
+      background-size: cover;
+      background-position: center center;
+    }
+    .image1 {
+      background-image: url(../images/1.jpg);
+    }
+    .image2 {
+      background-image: url(../images/2.jpg);
+    }
+    .image3 {
+      background-image: url(../images/3.jpg);
+    }
+    .textBox {
+      flex-grow: 1;
+      width: 42%;
+      text-align: center;
+      margin-right: 10px;
+      p {
+        margin: 25px 0 30px;
+      }
+      a {
+        font-size: .8em;
+        font-weight: bold;
+        display: inline-block;
+        @extend %resetSize;
+        background-color: $green;
+        border-radius: 10px;
+        border: double 3px $lightSatGreen;
+        padding: 10px 0;
+        width: 80px;
+        &:last-child {
+          margin-left: 10px;
+        }
+        &:hover {
+          background-color: white;
+          border: double 3px $green;
+        }
+      }
+    }
+  }
+}
