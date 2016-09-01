@@ -5,26 +5,27 @@ html(lang="en")
     header
       .titleBox
         h1 Theater Schmeater
-      .navbar.navbar-default.navbar-inner
-        .container-fluid
-          .navbar-header
-            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            h3 #[span M]ENU
-          #navbar.collapse.navbar-collapse
-            ul.nav
-              li
-                a(href='/') HOME
-              li
-                a(href='/season') SEASON/EVENTS
-              li
-                a(href='/support') SUPPORT
-              li
-                a(href='/about') ABOUT
-              li
-                a(href='/press') PRESS PAGE
+      .main-nav
+        .navbar.navbar-default.navbar-inner
+          .container-fluid
+            .navbar-header
+              button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              h3 #[span M]ENU
+            #navbar.collapse.navbar-collapse
+              ul.nav
+                li
+                  a(href='/') HOME
+                li
+                  a(href='/season') SEASON/EVENTS
+                li
+                  a(href='/support') SUPPORT
+                li
+                  a(href='/about') ABOUT
+                li
+                  a(href='/press') PRESS PAGE
 
     block content
     footer

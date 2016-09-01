@@ -3,7 +3,7 @@
 ***********************************************************************/
 @mixin pageColor($color1, $color2: null) {
   @if $color2 != null {
-    @media (min-width: 1004px) {
+    @media (min-width: $medium-size) {
       background: linear-gradient(90deg, $color1 50%, $color2 50%);
     }
   }
@@ -22,16 +22,16 @@
   @include pageColor($lightGreen, white);
 }
 .content {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
   @extend %flex;
   @extend %flex-wrap;
   @include flex-direction(column);
   @media (min-width: $medium-size) {
     @include flex-direction(row);
   }
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
 }
 .wider {
   max-width: 1500px;
@@ -115,10 +115,16 @@
     }
   }
 }
+@mixin scalable-top-padding {
+  @media (max-width: $medium-size){
+    padding-top: 50px;
+  }
+}
 //mixin to create the large white text area on all 3 pages
 @mixin mainContent {
   max-width: 1200px;
   @extend %flex-grow-1;
+  @include scalable-top-padding;
   padding: 30px 20px 30px 50px;
   background-color: white;
 }
@@ -253,6 +259,7 @@
   @include partContent($lightGreen);
   @include flex-basis($wideWidth*9/10);
   padding: 10px 0px 20px 10px;
+  @include scalable-top-padding;
   @include eventBar;
 }
 .indexCalendar {

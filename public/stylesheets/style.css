@@ -680,7 +680,7 @@ textarea {
 /***********************************************************************
                   EXTENDERS, cuz wow flex takes up room
 ***********************************************************************/
-ul, header, header .navbar, header .navbar h3, footer .container h3, footer .container p, .rightGreen .navbar, .rightGreen .navbar h3, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p, .seasonPageRightHalf h1, .seasonPageRightHalf ul li a .dateBox h3, .seasonPageRightHalf ul li a .dateBox p, .seasonPageLeftHalf ul li .textBox a {
+ul, header, header .main-nav .navbar, header .main-nav .navbar h3, footer .container h3, footer .container p, .rightGreen .navbar, .rightGreen .navbar h3, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p, .seasonPageRightHalf h1, .seasonPageRightHalf ul li a .dateBox h3, .seasonPageRightHalf ul li a .dateBox p, .seasonPageLeftHalf ul li .textBox a {
   padding: 0;
   margin: 0;
 }
@@ -738,6 +738,7 @@ header .titleBox h1, .background, .scrollContent, .pressContent, .indexUpcoming,
 body {
   min-height: 100vh;
   font-family: "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
+  padding-top: 175px;
 }
 
 h1 {
@@ -770,12 +771,13 @@ ul a:hover {
 /***********************************************************************
                               HEADER CSS
 ***********************************************************************/
-header {
-  text-align: center;
-}
-
 header .titleBox {
   background-color: #79b732;
+  height: 175px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 header .titleBox h1 {
@@ -788,56 +790,68 @@ header .titleBox h1 {
   }
 }
 
-header .navbar {
+header .scrolled {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-top: 10px;
+}
+
+header .main-nav {
+  z-index: 50;
+  margin-bottom: -50px;
+}
+
+header .main-nav .navbar {
   background-color: #815db7;
 }
 
 @media (min-width: 615px) {
-  header .navbar .collapse {
+  header .main-nav .navbar .collapse {
     display: block;
   }
-  header .navbar .navbar-header {
+  header .main-nav .navbar .navbar-header {
     display: none;
   }
 }
 
-header .navbar .navbar-toggle:hover {
+header .main-nav .navbar .navbar-toggle:hover {
   background-color: #5a3c87;
 }
 
-header .navbar .navbar-toggle .icon-bar {
+header .main-nav .navbar .navbar-toggle .icon-bar {
   background-color: #d9d9d9;
 }
 
-header .navbar h3 {
+header .main-nav .navbar h3 {
   color: white;
   text-align: left;
   padding: 10px 0 0 17px;
   font-size: 1.3em;
 }
 
-header .navbar h3 span {
+header .main-nav .navbar h3 span {
   font-size: 1.4em;
 }
 
-header .navbar ul li:nth-child(1n+2) {
+header .main-nav .navbar ul li:nth-child(1n+2) {
   border-top: 1px solid white;
 }
 
 @media (min-width: 615px) {
-  header .navbar ul li {
+  header .main-nav .navbar ul li {
     display: inline-block;
     border-left: 1px solid white;
   }
-  header .navbar ul li:nth-child(1n+2) {
+  header .main-nav .navbar ul li:nth-child(1n+2) {
     border-top: none;
   }
-  header .navbar ul li:last-child {
+  header .main-nav .navbar ul li:last-child {
     border-right: 1px solid white;
   }
 }
 
-header .navbar ul li a {
+header .main-nav .navbar ul li a {
   display: block;
   padding: 20px 20px 16px;
   font-size: 1.1em;
@@ -845,7 +859,7 @@ header .navbar ul li a {
   transition: background-color .3s;
 }
 
-header .navbar ul li a:hover {
+header .main-nav .navbar ul li a:hover {
   color: #fff;
   background-color: #5a3c87;
 }
@@ -892,25 +906,29 @@ footer small {
   width: 100%;
 }
 
-@media (min-width: 1004px) {
+@media (min-width: 768px) {
   .whitePurple {
     background: linear-gradient(90deg, white 50%, #dfd5ed 50%);
   }
 }
 
-@media (min-width: 1004px) {
+@media (min-width: 768px) {
   .whiteGreen {
     background: linear-gradient(90deg, white 50%, #dcefc6 50%);
   }
 }
 
-@media (min-width: 1004px) {
+@media (min-width: 768px) {
   .greenWhite {
     background: linear-gradient(90deg, #dcefc6 50%, white 50%);
   }
 }
 
 .content {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
   box-orient: vertical;
@@ -921,10 +939,6 @@ footer small {
   -moz-flex-direction: column;
   flex-direction: column;
   -ms-flex-direction: column;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
 }
 
 @media (min-width: 768px) {
@@ -1042,6 +1056,12 @@ footer small {
   background-color: white;
 }
 
+@media (max-width: 768px) {
+  .scrollContent {
+    padding-top: 50px;
+  }
+}
+
 .scrollContent p {
   margin-right: 30px;
 }
@@ -1067,6 +1087,12 @@ footer small {
   max-width: 1200px;
   padding: 30px 20px 30px 50px;
   background-color: white;
+}
+
+@media (max-width: 768px) {
+  .pressContent {
+    padding-top: 50px;
+  }
 }
 
 .pressContent > p {
@@ -1105,6 +1131,12 @@ footer small {
 
 .indexUpcoming h1:first-child {
   margin: 20px 0 10px;
+}
+
+@media (max-width: 768px) {
+  .indexUpcoming {
+    padding-top: 50px;
+  }
 }
 
 .indexUpcoming h1 {
