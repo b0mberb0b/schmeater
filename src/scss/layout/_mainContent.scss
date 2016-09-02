@@ -40,79 +40,23 @@
 /***********************************************************************
                   ABOUT, SUPPORT, and PRESS PAGES
 ***********************************************************************/
+.affix {
+  top: 2px;
+  width: 100%;
+}
 .rightGreen {
+  background-color: $lightGreen;
+  @include navbar();
+  z-index: 10;
+  height: 50px;
+  margin-bottom: -100px;
+  margin-top: 50px;
   order: -1;
-  // background-color: $lightGreen;
   @media (min-width: $medium-size) {
     order: 1;
     margin-bottom: -500px;
-    // padding: 50px 10px 50px 20px;
-    // min-width: 280px;
-  }
-  .navbar {
-    background-color: $lightGreen;
-    border: none;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.4);
-    @extend %resetSize;
-    @media (min-width: $small-size) {
-      .collapse {
-          display: block;
-      }
-      .navbar-header {
-          display: none;
-      }
-    }
-    .navbar-toggle {
-      border-color: lighten(black, 40%);
-      &:hover {
-        background-color: white;
-      }
-      .icon-bar {
-        background-color: lighten(black, 35%);
-      }
-    }
-    h3 {
-      @extend %resetSize;
-      color: black;
-      text-align: left;
-      padding: 10px 0 0 17px;
-      font-size: 1.3em;
-      span {
-        font-size: 1.4em;
-      }
-    }
-    h1 {
-      display: none;
-    }
-    ul {
-      li {
-        text-align: center;
-        &:nth-child(1n+2) {
-          border-top: solid 1.5px black;
-        }
-        @media (min-width: $small-size) {
-          display: inline-block;
-          border-left: 1.5px solid white;
-          &:nth-child(1n+2) {
-            border-top: none;
-          }
-          &:last-child {
-            border-right: 1.5px solid white;
-          }
-        }
-        a {
-          display: block;
-          padding: 20px 20px 16px;
-          font-size: 1.1em;
-          background-color: transparent;
-          transition: background-color .3s;
-          &:hover {
-            color: #fff;
-            background-color: $green;
-          }
-        }
-      }
-    }
+    padding: 50px 10px 50px 20px;
+    min-width: 280px;
   }
 }
 @mixin scalable-top-padding {
@@ -125,12 +69,26 @@
   max-width: 1200px;
   @extend %flex-grow-1;
   @include scalable-top-padding;
-  padding: 30px 20px 30px 50px;
+  margin-top: 50px;
+  padding: 50px 20px 20px;
   background-color: white;
+  h2:before {
+    display: block;
+    content: " ";
+    margin-top: -115px;
+    height: 115px;
+    visibility: hidden;
+  }
+  @media (min-width: $medium-size) {
+    padding: 0 20px 30px 50px;
+    h2:before {
+      display: none;
+    }
+  }
 }
 //used on Support and About pages for in-page links
 .scrollContent {
-  @include mainContent;
+  @include mainContent
   p {
     margin-right: 30px;
   }

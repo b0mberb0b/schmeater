@@ -11,8 +11,6 @@ $medium-size: 768px;
 $large-size: 1004px;
 $scroll-flex-basis: 538px;
 $wideWidth: 950px;
-//other variables
-$headerImageHeight: 175px;
 
 /***********************************************************************
                   EXTENDERS, cuz wow flex takes up room
@@ -45,7 +43,6 @@ body {
   @extend %flex-direction-column;
   min-height: 100vh;
   font-family: $lucida-grande;
-  padding-top: $headerImageHeight;
 }
 h1 {
   font-size: 3.3em;

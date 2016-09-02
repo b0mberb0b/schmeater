@@ -1,3 +1,94 @@
+/*my altered version of the bootstrap navbar class, used for both top and side
+bars on small devices */
+@mixin navbar($colorScheme: false) {
+  .navbar {
+    @if($colorScheme) {
+      background-color: $lightPurple;
+    } @else {
+      background-color: $lightGreen;
+      border: none;
+      box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+    }
+    @extend %resetSize;
+    @media (min-width: $small-size) {
+      .collapse {
+          display: block;
+      }
+      .navbar-header {
+          display: none;
+      }
+    }
+    .navbar-toggle {
+      @if($colorScheme) {
+      } @else {
+        border-color: lighten(black, 40%);
+      }
+      &:hover {
+        @if($colorScheme) {
+          background-color: $purple;
+        } @else {
+          background-color: white;
+        }
+      }
+      &:focus {
+        @if($colorScheme) {
+          background-color: $purple;
+        }
+      }
+      .icon-bar {
+        @if($colorScheme) {
+          background-color: darken(white, 15%);
+        } @else {
+          background-color: lighten(black, 35%);
+        }
+      }
+    }
+    h3 {
+      @extend %resetSize;
+      @if($colorScheme) {
+        color: white;
+      } @else {
+        color: black;
+      }
+      text-align: left;
+      padding: 10px 0 0 17px;
+      font-size: 1.3em;
+      span {
+        font-size: 1.4em;
+      }
+    }
+    ul {
+      text-align: center;
+      li {
+        &:nth-child(1n+2) {
+          border-top: 1px solid white;
+        }
+        @media (min-width: $small-size) {
+          display: inline-block;
+          border-left: 1px solid white;
+          &:nth-child(1n+2) {
+            border-top: none;
+          }
+          &:last-child {
+            border-right: 1px solid white;
+          }
+        }
+        a {
+          display: block;
+          padding: 20px 20px 16px;
+          font-size: 1.1em;
+          background-color: transparent;
+          transition: background-color .3s;
+          &:hover {
+            color: #fff;
+            background-color: $purple;
+          }
+        }
+      }
+    }
+  }
+}
+
 /***********************************************************************
                               HEADER CSS
 ***********************************************************************/
@@ -11,10 +102,8 @@ header {
     // background-repeat: no-repeat;
     // background-position: center center;
     background-color: $green;
-    height: $headerImageHeight;
+    height: 175px;
     text-align: center;
-    position: fixed;
-    top: 0;
     width: 100%;
     h1 {
       @media (min-width: 500px) {
@@ -24,73 +113,14 @@ header {
       @extend %flex-grow-1;
     }
   }
-  .scrolled {
-    position: fixed;
+  .affix {
     top: 0;
     width: 100%;
-    padding-top: 10px;
   }
   .main-nav {
     z-index: 50;
     margin-bottom: -50px;
-    .navbar {
-      background-color: $lightPurple;
-      @extend %resetSize;
-      @media (min-width: $small-size) {
-        .collapse {
-            display: block;
-        }
-        .navbar-header {
-            display: none;
-        }
-      }
-      .navbar-toggle {
-        &:hover {
-          background-color: $purple;
-        }
-        .icon-bar {
-          background-color: darken(white, 15%);
-        }
-      }
-      h3 {
-        @extend %resetSize;
-        color: white;
-        text-align: left;
-        padding: 10px 0 0 17px;
-        font-size: 1.3em;
-        span {
-          font-size: 1.4em;
-        }
-      }
-      ul {
-        li {
-          &:nth-child(1n+2) {
-            border-top: 1px solid white;
-          }
-          @media (min-width: $small-size) {
-            display: inline-block;
-            border-left: 1px solid white;
-            &:nth-child(1n+2) {
-              border-top: none;
-            }
-            &:last-child {
-              border-right: 1px solid white;
-            }
-          }
-          a {
-            display: block;
-            padding: 20px 20px 16px;
-            font-size: 1.1em;
-            background-color: transparent;
-            transition: background-color .3s;
-            &:hover {
-              color: #fff;
-              background-color: $purple;
-            }
-          }
-        }
-      }
-    }
+    @include navbar(true);
   }
 }
 
