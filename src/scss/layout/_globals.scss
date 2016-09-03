@@ -2,14 +2,13 @@
 $purple: #5a3c87;
 $lightPurple: lighten($purple, 16%);
 $lighterPurple: lighten($purple, 50%);
-$green: #79b732;
-$lightGreen: lighten($green, 40%);
+$green: #7bda0e;
+$lightGreen: lighten($green, 37%);
 $lightSatGreen: saturate($lightGreen, 30%);
 //media width variables
 $small-size: 615px;
 $medium-size: 768px;
 $large-size: 1004px;
-$scroll-flex-basis: 538px;
 $wideWidth: 950px;
 
 /***********************************************************************
@@ -33,8 +32,12 @@ $wideWidth: 950px;
 }
 
 /***********************************************************************
-                      OVERALL STYLISTIC CHANGES
+                      GLOBAL STYLISTIC CHANGES
 ***********************************************************************/
+@font-face {
+    font-family: titleFont;
+    src: url(../fonts/HelveticaNeueLTStd-BdCn.otf);
+}
 * {
   box-sizing: border-box;
 }
@@ -46,6 +49,7 @@ body {
 }
 h1 {
   font-size: 3.3em;
+  font-family: titleFont;
 }
 h2 {
   font-size: 2.2em;
@@ -57,12 +61,16 @@ p {
 ul {
   @extend %resetSize;
   list-style: none;
-  a {
+}
+a {
+  text-decoration: none;
+  color: black;
+  &:hover {
     text-decoration: none;
     color: black;
-    &:hover {
-      text-decoration: none;
-      color: black;
-    }
   }
+}
+.affix {
+  top: 0;
+  width: 100%;
 }

@@ -25,11 +25,10 @@
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  position: relative;
   @extend %flex;
   @extend %flex-wrap;
-  @include flex-direction(column);
-  @media (min-width: $medium-size) {
+  @extend %flex-direction-column;
+  @media (min-width: $small-size) {
     @include flex-direction(row);
   }
 }
@@ -40,32 +39,64 @@
 /***********************************************************************
                   ABOUT, SUPPORT, and PRESS PAGES
 ***********************************************************************/
-.affix {
-  top: 2px;
-  width: 100%;
-}
-.rightGreen {
-  background-color: $lightGreen;
+#subNav {
   @include navbar();
   z-index: 10;
   height: 50px;
   margin-bottom: -100px;
   margin-top: 50px;
-  order: -1;
-  @media (min-width: $medium-size) {
-    order: 1;
-    margin-bottom: -500px;
-    padding: 50px 10px 50px 20px;
-    min-width: 280px;
+  @media (min-width: $small-size) {
+    display: none;
+  }
+}
+#sideGreen {
+  position: relative;
+  @media (min-width: $small-size) {
+    background-color: $lightGreen;
+    min-width: 160px;
+    @media (min-width: $medium-size) {
+      width: 240px;
+    }
+  }
+  #sideNav {
+    display: none;
+    @media (min-width: $small-size) {
+      display: block;
+      position: fixed;
+      padding: 80px 0 0 10px;
+      h1 {
+        display: block;
+        font-size: 2.5em;
+      }
+      ul {
+        width: 120px;
+        @media (min-width: $medium-size) {
+          width: 200px;
+        }
+        li a {
+            display: block;
+            padding: 8px;
+            margin-bottom: 10px;
+            background-color: white;
+            border-radius: 3px;
+            &:hover {
+              background-color: $purple;
+              text-decoration: underline;
+              color: white;
+          }
+        }
+      }
+    }
   }
 }
 @mixin scalable-top-padding {
-  @media (max-width: $medium-size){
+  @media (max-width: $small-size){
     padding-top: 50px;
   }
 }
 //mixin to create the large white text area on all 3 pages
 @mixin mainContent {
+  position: relative;
   max-width: 1200px;
   @extend %flex-grow-1;
   @include scalable-top-padding;
@@ -79,7 +110,7 @@
     height: 115px;
     visibility: hidden;
   }
-  @media (min-width: $medium-size) {
+  @media (min-width: $small-size) {
     padding: 0 20px 30px 50px;
     h2:before {
       display: none;
@@ -129,73 +160,6 @@
         &:hover {
           text-decoration: underline;
           color: $green;
-        }
-      }
-    }
-  }
-}
-@mixin eventBar($screenWidth: none) {
-  h1 {
-    @extend %resetSize;
-    font-size: 3em;
-    &:first-child {
-      line-height: 30px;
-      margin-top: 20px;
-      font-size: 2em;
-    }
-  }
-  ul {
-    @extend %flex;
-    @extend %flex-wrap;
-    @include justify-content(flex-start);
-    li {
-      @extend %flex-grow-1;
-      @include flex-basis(400px);
-      margin: 15px 10px 0 0;
-      a {
-        @extend %flex;
-        width: 100%;
-        height: 100px;
-        border-radius: 5px;
-        background-color: white;
-        .dateBox {
-          text-align: center;
-          color: white;
-          width: 70px;
-          padding: 30px 10px 0;
-          margin: 0;
-          background-color: $green;
-          h3, p {
-            @extend %resetSize;
-            line-height: 25px;
-          }
-        }
-        .textBox {
-          width: 70%;
-          margin: 0 10px 0 20px;
-          font-size: 0.8em;
-          h3, p {
-            margin-top: 10px;
-            @if($screenWidth != none) {
-              @media (min-width: $screenWidth) {
-                font-size: 1.5em;
-              }
-            }
-          }
-        }
-        span {
-          width: 80px;
-          padding: 30px 0 0;
-          margin-left: auto;
-          text-align: center;
-          font-weight: bold;
-          display: inline-block;
-          background-color: $lighterPurple;
-          border-radius: 5px;
-          border-left: double 3px $purple;
-        }
-        &:hover span {
-          background-color: $lightPurple;
         }
       }
     }

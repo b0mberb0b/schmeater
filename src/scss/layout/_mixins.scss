@@ -1,0 +1,166 @@
+/***********************************************************************
+                            EVENT SECTION CSS
+***********************************************************************/
+/* container and individual box css for theater shows/events */
+@mixin eventBar($screenWidth: none) {
+  h1 {
+    @extend %resetSize;
+    font-size: 3em;
+    &:first-child {
+      line-height: 30px;
+      margin-top: 20px;
+      font-size: 2em;
+    }
+  }
+  ul {
+    @extend %flex;
+    @extend %flex-wrap;
+    @include justify-content(flex-start);
+    li {
+      @extend %flex-grow-1;
+      @include flex-basis(400px);
+      margin: 15px 10px 0 0;
+      a {
+        @extend %flex;
+        width: 100%;
+        height: 100px;
+        border-radius: 5px;
+        background-color: white;
+        .dateBox {
+          text-align: center;
+          color: white;
+          width: 70px;
+          padding: 30px 10px 0;
+          margin: 0;
+          background-color: $green;
+          h3, p {
+            @extend %resetSize;
+            line-height: 25px;
+          }
+        }
+        .textBox {
+          width: 70%;
+          margin: 0 10px 0 20px;
+          font-size: 0.8em;
+          h3, p {
+            margin-top: 10px;
+            @if($screenWidth != none) {
+              @media (min-width: $screenWidth) {
+                font-size: 1.5em;
+              }
+            }
+          }
+        }
+        span {
+          width: 80px;
+          padding: 30px 0 0;
+          margin-left: auto;
+          text-align: center;
+          font-weight: bold;
+          display: inline-block;
+          background-color: $lighterPurple;
+          border-radius: 5px;
+          border-left: double 3px $purple;
+        }
+        &:hover span {
+          background-color: $lightPurple;
+        }
+      }
+    }
+  }
+}
+/***********************************************************************
+                              NAVBAR CSS
+***********************************************************************/
+/*altered version of the bootstrap navbar class, used for both top and side
+bars on small devices, true means a purple scheme, blank turns to false and renders a green color scheme*/
+@mixin navbar($colorScheme: green) {
+  .navbar {
+    @media (min-width: $small-size) {
+      .collapse {
+          display: block;
+      }
+      .navbar-header {
+          display: none;
+      }
+    }
+    @if($colorScheme == purple) {
+      background-color: $lightPurple;
+    } @else {
+      background-color: $lightGreen;
+      border: none;
+      box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+    }
+    .navbar-toggle {
+      @if($colorScheme == purple) {
+      } @else {
+        border-color: lighten(black, 40%);
+      }
+      &:hover {
+        @if($colorScheme == purple) {
+          background-color: $purple;
+        } @else {
+          background-color: white;
+        }
+      }
+      &:focus {
+        @if($colorScheme == purple) {
+          background-color: $purple;
+        } @else {
+          background-color: white;
+        }
+      }
+      .icon-bar {
+        @if($colorScheme == purple) {
+          background-color: darken(white, 15%);
+        } @else {
+          background-color: lighten(black, 35%);
+        }
+      }
+    }
+    h3 {
+      @if($colorScheme == purple) {
+        color: white;
+      } @else {
+        color: black;
+      }
+      text-align: left;
+      padding: 10px 0 0 17px;
+      margin: 0;
+      font-size: 1.3em;
+      span {
+        font-size: 1.4em;
+      }
+    }
+    ul {
+      text-align: center;
+      li {
+        &:nth-child(1n+2) {
+          border-top: 1px solid white;
+        }
+        @media (min-width: $small-size) {
+          display: inline-block;
+          border-left: 1px solid white;
+          &:nth-child(1n+2) {
+            border-top: none;
+          }
+          &:last-child {
+            border-right: 1px solid white;
+          }
+        }
+        a {
+          display: block;
+          padding: 17px 20px;
+          font-size: 1.1em;
+          height: 50px;
+          background-color: transparent;
+          transition: background-color .3s;
+          &:hover {
+            color: white;
+            background-color: $purple;
+          }
+        }
+      }
+    }
+  }
+}
