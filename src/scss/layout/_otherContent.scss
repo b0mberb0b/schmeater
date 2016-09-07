@@ -1,0 +1,205 @@
+/***********************************************************************
+                  BACKGROUND AND CENTERING CONTAINERS
+***********************************************************************/
+/* mixin deciding all pages' background colors */
+@mixin pageColor($color1, $color2: null) {
+  @if $color2 != null {
+    @media (min-width: $medium-size) {
+      background: linear-gradient(90deg, $color1 50%, $color2 50%);
+    }
+  }
+}
+/* base container on each page below header */
+.background {
+  @extend %flex-grow-1;
+  width: 100%;
+}
+.whitePurple {
+  @include pageColor(white, $lighterPurple);
+}
+.whiteGreen {
+  @include pageColor(white, $lightGreen);
+}
+.greenWhite {
+  @include pageColor($lightGreen, white);
+}
+/* centering container on each page, child to background */
+%content {
+  margin-left: auto;
+  margin-right: auto;
+  @extend %flex;
+  @extend %flex-wrap;
+  @extend %flex-direction-column;
+}
+.eventContent {
+  @extend %content;
+  max-width: 1500px;
+  @media (min-width: $eventsToRows) {
+    @include flex-direction(row);
+  }
+}
+.otherContent {
+  @extend %content;
+  max-width: 1200px;
+  @media (min-width: $small-size) {
+    @include flex-direction(row);
+  }
+}
+
+/***********************************************************************
+                  ABOUT, SUPPORT, and PRESS PAGES
+***********************************************************************/
+/* secondary sticky navigation menu that appears on small devices */
+#subNav {
+  @include navbar();
+  z-index: 10;
+  height: 50px;
+  margin-bottom: -100px;
+  margin-top: 50px;
+  @media (min-width: $small-size) {
+    display: none;
+  }
+}
+/* rightside green bar that appears on medium and larger devices */
+#sideGreen {
+  position: relative;
+  @media (min-width: $small-size) {
+    background-color: $lightGreen;
+    min-width: 160px;
+    @media (min-width: $medium-size) {
+      width: 240px;
+    }
+  }
+  /* rightside navigation menu that appears on medium and larger devices */
+  #sideNav {
+    display: none;
+    @media (min-width: $small-size) {
+      display: block;
+      position: fixed;
+      padding: 80px 0 0 10px;
+      h1 {
+        display: block;
+        font-size: 2.5em;
+      }
+      ul {
+        width: 120px;
+        @media (min-width: $medium-size) {
+          width: 200px;
+        }
+        li a {
+            display: block;
+            padding: 8px;
+            margin-bottom: 10px;
+            background-color: white;
+            border-radius: 3px;
+            &:hover {
+              background-color: $purple;
+              text-decoration: underline;
+              color: white;
+          }
+        }
+      }
+    }
+  }
+}
+/* extension for all three pages */
+%mainContent {
+  position: relative;
+  max-width: 1200px;
+  @extend %flex-grow-1;
+  margin-top: 50px;
+  padding: 50px 20px 20px;
+  @media (max-width: $small-size){
+    padding-top: 50px;
+  }
+  background-color: white;
+  h2 {
+    font-size: 2.5em;
+    font-family: titleFont;
+    margin-bottom: 6px;
+    /* allows for precise in-page link scrolling */
+    &:before {
+      display: block;
+      content: " ";
+      margin-top: -115px;
+      height: 115px;
+    }
+    @media (min-width: $small-size) {
+      &:before {
+        margin-top: -65px;
+        height: 65px;
+      }
+    }
+    @media (min-width: $medium-size) {
+      &:before {
+        margin-top: 0;
+        height: 0;
+      }
+    }
+  }
+}
+/* styles for Support and About pages */
+.scrollContent {
+  @extend %mainContent;
+  > p {
+    margin-right: 30px;
+  }
+  hr {
+    margin-right: 2.5em;
+  }
+  #staff, #board {
+    text-align: center;
+    width: 100%;
+    @media (min-width: $small-size) {
+      text-align: left;
+    }
+  }
+  ul {
+    @extend %flex;
+    @extend %flex-wrap;
+    justify-content: space-around;
+    li {
+      text-align: center;
+      width: 100%;
+      font-size: .8em;
+      margin-bottom: 15px;
+      @media(min-width: $small-size - 150) {
+        width: 40%;
+      }
+      @media(min-width: $medium-size) {
+        max-width: 265px;
+        font-size: 1em;
+      }
+      @media (min-width: 1135px) {
+        &:nth-child(3n) {
+          width: 200px;
+          margin-right: 25px;
+        }
+      }
+    }
+  }
+}
+/* styles for Press page */
+.pressContent {
+  @extend %mainContent;
+  > p {
+    margin-top: 6px;
+    &:last-child {
+    font-style: italic;
+    }
+  }
+  ul {
+    @extend %flex;
+    @extend %flex-direction-column;
+    li {
+      margin-bottom: 15px;
+      a {
+        color: $purple;
+        &:hover {
+          text-decoration: underline;
+          color: $green;
+        }
+      }
+    }
+  }
+}

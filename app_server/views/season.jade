@@ -2,38 +2,41 @@ extends layout
 
 block content
   .background.whiteGreen
-    .content.wider
-      .seasonPageLeftHalf
+    .eventContent
+      .currentSeason
         h1 2016 SEASON
         .dotBorder
           p Season Tickets are a great way to save! Purchase and learn more about the many options available in our #[a(href="#") Tickets and Discounts] section.
         ul
-          li.eventItem
+          li
             .image.image1
             .seasonText
-              h3 Little Bit of Bliss
+              .title
+                h3 Little Bit of Bliss
               p May 25 - Dec 18
               a(href="#") VIEW DETAILS
               a(href="#") GET TICKETS
-          li.eventItem
+          li
             .image.image2
             .seasonText
-              h3 Hunky Dory Dinner
+              .title
+                h3 Hunky Dory Dinner
               p June 12 - July 30
               a(href="#") VIEW DETAILS
               a(href="#") GET  TICKETS
-          li.eventItem
+          li
             .image.image3
             .seasonText
-              h3 The Happening
+              .title
+                h3 The Happening
               p Oct 29 - Nov 1
               a(href="#") VIEW DETAILS
               a(href="#") GET  TICKETS
-      .seasonPageRightHalf
+      .upcomingEvents
         h1 UPCOMING
         h1 SCHMEE EVENTS
         ul
-          li
+          li.eventItem
             a(href="#")
               .dateBox
                 p APRIL
@@ -42,7 +45,7 @@ block content
                 h3 Slap Night
                 p Drink Wine and be merry at our annual slapstick show
               span VIEW DETAILS
-          li
+          li.eventItem
             a(href="#")
               .dateBox
                 p APRIL
@@ -51,7 +54,7 @@ block content
                 h3 Rollin' Shakespeare
                 p We invite the critically-acclaimed worst shakespearean actors to give you a laugh
               span VIEW DETAILS
-          li
+          li.eventItem
             a(href="#")
               .dateBox
                 p APRIL
@@ -60,7 +63,7 @@ block content
                 h3 25th Anniversary Gala
                 p We've been around for 25 years, come and celebrate this momentous occasion!
               span VIEW DETAILS
-          li
+          li.eventItem
             a(href="#")
               .dateBox
                 p MAY

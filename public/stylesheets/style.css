@@ -680,12 +680,12 @@ textarea {
 /***********************************************************************
                   EXTENDERS, cuz wow flex takes up room
 ***********************************************************************/
-ul, header, footer .container h3, footer .container p, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p, .seasonPageRightHalf h1, .seasonPageRightHalf ul li a .dateBox h3, .seasonPageRightHalf ul li a .dateBox p, .seasonPageLeftHalf ul li .seasonText a {
+ul, header, footer .container h3, footer .container p, .upcomingEvents h1, .upcomingEvents ul li a .dateBox h3, .upcomingEvents ul li a .dateBox p, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p {
   padding: 0;
   margin: 0;
 }
 
-body, header, footer, .content, .scrollContent ul, .pressContent ul, .indexUpcoming, .indexUpcoming ul, .indexUpcoming ul li a, .indexCalendar, .indexGallery, .indexPress, .indexOther, .seasonPageRightHalf, .seasonPageRightHalf ul, .seasonPageRightHalf ul li a, .seasonPageLeftHalf {
+body, header, footer, .eventContent, .otherContent, .scrollContent ul, .pressContent ul, .upcomingEvents, .upcomingEvents ul, .upcomingEvents ul li a, .currentSeason, .indexUpcoming, .indexUpcoming ul, .indexUpcoming ul li a, .indexCalendar, .indexGallery, .indexPress, .indexOther {
   display: -webkit-box;
   display: -moz-box;
   display: box;
@@ -695,7 +695,7 @@ body, header, footer, .content, .scrollContent ul, .pressContent ul, .indexUpcom
   display: flex;
 }
 
-body, header, .content, .pressContent ul, .indexUpcoming, .indexCalendar, .indexGallery, .indexPress, .indexOther, .seasonPageRightHalf, .seasonPageLeftHalf {
+body, header, .eventContent, .otherContent, .pressContent ul, .upcomingEvents, .currentSeason, .indexUpcoming, .indexCalendar, .indexGallery, .indexPress, .indexOther {
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
   box-orient: vertical;
@@ -708,7 +708,7 @@ body, header, .content, .pressContent ul, .indexUpcoming, .indexCalendar, .index
   -ms-flex-direction: column;
 }
 
-header a h1, .background, .scrollContent, .pressContent, .indexUpcoming, .indexUpcoming ul li, .indexCalendar, .indexGallery, .indexPress, .indexOther, .seasonPageRightHalf, .seasonPageRightHalf ul li, .seasonPageLeftHalf {
+header a h1, .background, .scrollContent, .pressContent, .upcomingEvents, .upcomingEvents ul li, .currentSeason, .indexUpcoming, .indexUpcoming ul li, .indexCalendar, .indexGallery, .indexPress, .indexOther {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
@@ -718,7 +718,7 @@ header a h1, .background, .scrollContent, .pressContent, .indexUpcoming, .indexU
   flex: 1;
 }
 
-.content, .scrollContent ul, .indexUpcoming ul, .seasonPageRightHalf ul {
+.eventContent, .otherContent, .scrollContent ul, .upcomingEvents ul, .indexUpcoming ul {
   -webkit-box-lines: multiple;
   -moz-box-lines: multiple;
   box-lines: multiple;
@@ -784,6 +784,7 @@ a:hover {
   }
 }
 
+/* base mixin for all sections on Season and Index pages */
 /***********************************************************************
                             EVENT SECTION CSS
 ***********************************************************************/
@@ -930,6 +931,8 @@ footer small {
 /***********************************************************************
                   BACKGROUND AND CENTERING CONTAINERS
 ***********************************************************************/
+/* mixin deciding all pages' background colors */
+/* base container on each page below header */
 .background {
   width: 100%;
 }
@@ -952,14 +955,18 @@ footer small {
   }
 }
 
-.content {
-  max-width: 1200px;
+/* centering container on each page, child to background */
+.eventContent, .otherContent {
   margin-left: auto;
   margin-right: auto;
 }
 
-@media (min-width: 615px) {
-  .content {
+.eventContent {
+  max-width: 1500px;
+}
+
+@media (min-width: 815px) {
+  .eventContent {
     -webkit-box-orient: horizontal;
     -moz-box-orient: horizontal;
     box-orient: horizontal;
@@ -973,13 +980,29 @@ footer small {
   }
 }
 
-.wider {
-  max-width: 1500px;
+.otherContent {
+  max-width: 1200px;
+}
+
+@media (min-width: 615px) {
+  .otherContent {
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row;
+  }
 }
 
 /***********************************************************************
                   ABOUT, SUPPORT, and PRESS PAGES
 ***********************************************************************/
+/* secondary sticky navigation menu that appears on small devices */
 #subNav {
   z-index: 10;
   height: 50px;
@@ -1071,8 +1094,10 @@ footer small {
   }
 }
 
+/* rightside green bar that appears on medium and larger devices */
 #sideGreen {
   position: relative;
+  /* rightside navigation menu that appears on medium and larger devices */
 }
 
 @media (min-width: 615px) {
@@ -1128,7 +1153,8 @@ footer small {
   }
 }
 
-.scrollContent {
+/* extension for all three pages */
+.scrollContent, .pressContent {
   position: relative;
   max-width: 1200px;
   margin-top: 50px;
@@ -1137,32 +1163,40 @@ footer small {
 }
 
 @media (max-width: 615px) {
-  .scrollContent {
+  .scrollContent, .pressContent {
     padding-top: 50px;
   }
 }
 
-.scrollContent h2 {
+.scrollContent h2, .pressContent h2 {
   font-size: 2.5em;
   font-family: titleFont;
   margin-bottom: 6px;
+  /* allows for precise in-page link scrolling */
 }
 
-.scrollContent h2 h2:before {
+.scrollContent h2:before, .pressContent h2:before {
   display: block;
   content: " ";
   margin-top: -115px;
   height: 115px;
-  visibility: hidden;
 }
 
 @media (min-width: 615px) {
-  .scrollContent h2 h2:before {
+  .scrollContent h2:before, .pressContent h2:before {
     margin-top: -65px;
     height: 65px;
   }
 }
 
+@media (min-width: 768px) {
+  .scrollContent h2:before, .pressContent h2:before {
+    margin-top: 0;
+    height: 0;
+  }
+}
+
+/* styles for Support and About pages */
 .scrollContent > p {
   margin-right: 30px;
 }
@@ -1213,41 +1247,7 @@ footer small {
   }
 }
 
-.pressContent {
-  position: relative;
-  max-width: 1200px;
-  margin-top: 50px;
-  padding: 50px 20px 20px;
-  background-color: white;
-}
-
-@media (max-width: 615px) {
-  .pressContent {
-    padding-top: 50px;
-  }
-}
-
-.pressContent h2 {
-  font-size: 2.5em;
-  font-family: titleFont;
-  margin-bottom: 6px;
-}
-
-.pressContent h2 h2:before {
-  display: block;
-  content: " ";
-  margin-top: -115px;
-  height: 115px;
-  visibility: hidden;
-}
-
-@media (min-width: 615px) {
-  .pressContent h2 h2:before {
-    margin-top: -65px;
-    height: 65px;
-  }
-}
-
+/* styles for Press page */
 .pressContent > p {
   margin-top: 6px;
 }
@@ -1269,6 +1269,252 @@ footer small {
   color: #7bda0e;
 }
 
+/***********************************************************************
+                          SEASON PAGE SECTIONS
+***********************************************************************/
+/* styling for Events section on Season Page */
+.upcomingEvents {
+  background-color: #d5faab;
+  padding: 0 10px 30px;
+}
+
+.upcomingEvents h1 {
+  text-align: center;
+}
+
+.upcomingEvents h1:first-child {
+  margin: 20px 0 10px;
+}
+
+.upcomingEvents h1 {
+  font-size: 3em;
+}
+
+.upcomingEvents h1:first-child {
+  line-height: 30px;
+  margin-top: 20px;
+  font-size: 2em;
+}
+
+.upcomingEvents ul {
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  box-pack: start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  -o-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+}
+
+.upcomingEvents ul li {
+  -webkit-flex-basis: 400px;
+  -moz-flex-basis: 400px;
+  flex-basis: 400px;
+  -ms-flex-preferred-size: 400px;
+  margin: 15px 10px 0 0;
+}
+
+.upcomingEvents ul li a {
+  width: 100%;
+  height: 100px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.upcomingEvents ul li a .dateBox {
+  text-align: center;
+  color: white;
+  width: 70px;
+  padding: 30px 10px 0;
+  margin: 0;
+  background-color: #7bda0e;
+}
+
+.upcomingEvents ul li a .dateBox h3, .upcomingEvents ul li a .dateBox p {
+  line-height: 25px;
+}
+
+.upcomingEvents ul li a .eventText {
+  margin: 0 10px 0 20px;
+  font-size: 0.8em;
+  overflow: hidden;
+}
+
+.upcomingEvents ul li a .eventText h3 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.upcomingEvents ul li a .eventText h3, .upcomingEvents ul li a .eventText p {
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+.upcomingEvents ul li a span {
+  width: 80px;
+  padding: 30px 0 0;
+  margin-left: auto;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #dfd5ed;
+  border-radius: 5px;
+  border-left: double 3px #5a3c87;
+}
+
+.upcomingEvents ul li a:hover span {
+  background-color: #815db7;
+}
+
+@media (min-width: 815px) {
+  .upcomingEvents {
+    padding: 50px 0px 20px 20px;
+  }
+}
+
+/* styling for Season section on Season Page */
+.currentSeason {
+  background-color: white;
+  padding: 50px 10px 30px;
+}
+
+.currentSeason h1 {
+  text-align: center;
+}
+
+.currentSeason h1:first-child {
+  margin: 20px 0 10px;
+}
+
+@media (min-width: 815px) {
+  .currentSeason {
+    padding: 50px 20px 30px 10px;
+  }
+}
+
+.currentSeason .dotBorder {
+  margin: 20px auto 10px;
+  border: dotted 3px gray;
+}
+
+.currentSeason .dotBorder p {
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+}
+
+.currentSeason .dotBorder a {
+  text-decoration: underline;
+  color: #5a3c87;
+}
+
+.currentSeason ul li {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  margin-top: 15px;
+  border: dotted 3px #7bda0e;
+  border-radius: 5px;
+  background-color: #d5ffa6;
+}
+
+.currentSeason ul li .image {
+  flex-grow: 1;
+  width: 50%;
+  height: 175px;
+  margin: 10px 0 6px 15px;
+  box-shadow: 0 0 3px 4px #d5ffa6 inset;
+  background-size: cover;
+  background-position: center center;
+}
+
+.currentSeason ul li .image1 {
+  background-image: url(../images/1.jpg);
+}
+
+.currentSeason ul li .image2 {
+  background-image: url(../images/2.jpg);
+}
+
+.currentSeason ul li .image3 {
+  background-image: url(../images/3.jpg);
+}
+
+.currentSeason ul li .seasonText {
+  flex-grow: 1;
+  width: 42%;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.currentSeason ul li .seasonText .title {
+  height: 40px;
+}
+
+.currentSeason ul li .seasonText h3 {
+  font-weight: bold;
+}
+
+@media (max-width: 350px) {
+  .currentSeason ul li .seasonText h3 {
+    font-size: 1.4em;
+  }
+}
+
+.currentSeason ul li .seasonText p {
+  margin: 25px 0 10px;
+}
+
+@media (max-width: 350px) {
+  .currentSeason ul li .seasonText p {
+    font-size: .85em;
+  }
+}
+
+.currentSeason ul li .seasonText a {
+  font-size: .9em;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #7bda0e;
+  border-radius: 10px;
+  border: double 3px #d5ffa6;
+  width: 100%;
+  padding: 3px 0;
+  margin-bottom: 5px;
+  /* makes buttons wider and shorter at sizes it would overflow */
+}
+
+@media (min-width: 442px) and (max-width: 815px) {
+  .currentSeason ul li .seasonText a {
+    padding: 10px 0;
+    width: 80px;
+  }
+}
+
+@media (min-width: 1005px) {
+  .currentSeason ul li .seasonText a {
+    padding: 10px 0;
+    width: 80px;
+  }
+}
+
+.currentSeason ul li .seasonText a:first-of-type {
+  margin-right: 10px;
+}
+
+@media (min-width: 815px) and (max-width: 1004px) {
+  .currentSeason ul li .seasonText a:first-of-type {
+    margin-right: 0;
+  }
+}
+
+.currentSeason ul li .seasonText a:hover {
+  background-color: white;
+  border: double 3px #7bda0e;
+}
+
 .indexUpcoming {
   background-color: #d5faab;
   -webkit-flex-basis: 855px;
@@ -1284,12 +1530,6 @@ footer small {
 
 .indexUpcoming h1:first-child {
   margin: 20px 0 10px;
-}
-
-@media (max-width: 615px) {
-  .indexUpcoming {
-    padding-top: 50px;
-  }
 }
 
 .indexUpcoming h1 {
@@ -1345,6 +1585,7 @@ footer small {
 .indexUpcoming ul li a .eventText {
   margin: 0 10px 0 20px;
   font-size: 0.8em;
+  overflow: hidden;
 }
 
 .indexUpcoming ul li a .eventText h3 {
@@ -1354,14 +1595,7 @@ footer small {
 
 .indexUpcoming ul li a .eventText h3, .indexUpcoming ul li a .eventText p {
   margin-top: 10px;
-}
-
-@media (max-width: 615px) {
-  .indexUpcoming ul li a .eventText p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  font-size: 1.5em;
 }
 
 .indexUpcoming ul li a span {
@@ -1446,236 +1680,4 @@ footer small {
 
 .indexOther h1:first-child {
   margin: 20px 0 10px;
-}
-
-.seasonPageRightHalf {
-  background-color: #d5faab;
-  padding: 0 10px 30px;
-}
-
-.seasonPageRightHalf h1 {
-  text-align: center;
-}
-
-.seasonPageRightHalf h1:first-child {
-  margin: 20px 0 10px;
-}
-
-.seasonPageRightHalf h1 {
-  font-size: 3em;
-}
-
-.seasonPageRightHalf h1:first-child {
-  line-height: 30px;
-  margin-top: 20px;
-  font-size: 2em;
-}
-
-.seasonPageRightHalf ul {
-  -webkit-box-pack: start;
-  -moz-box-pack: start;
-  box-pack: start;
-  -webkit-justify-content: flex-start;
-  -moz-justify-content: flex-start;
-  -ms-justify-content: flex-start;
-  -o-justify-content: flex-start;
-  justify-content: flex-start;
-  -ms-flex-pack: start;
-}
-
-.seasonPageRightHalf ul li {
-  -webkit-flex-basis: 400px;
-  -moz-flex-basis: 400px;
-  flex-basis: 400px;
-  -ms-flex-preferred-size: 400px;
-  margin: 15px 10px 0 0;
-}
-
-.seasonPageRightHalf ul li a {
-  width: 100%;
-  height: 100px;
-  border-radius: 5px;
-  background-color: white;
-}
-
-.seasonPageRightHalf ul li a .dateBox {
-  text-align: center;
-  color: white;
-  width: 70px;
-  padding: 30px 10px 0;
-  margin: 0;
-  background-color: #7bda0e;
-}
-
-.seasonPageRightHalf ul li a .dateBox h3, .seasonPageRightHalf ul li a .dateBox p {
-  line-height: 25px;
-}
-
-.seasonPageRightHalf ul li a .eventText {
-  margin: 0 10px 0 20px;
-  font-size: 0.8em;
-}
-
-.seasonPageRightHalf ul li a .eventText h3 {
-  font-size: 1.4em;
-  font-weight: bold;
-}
-
-.seasonPageRightHalf ul li a .eventText h3, .seasonPageRightHalf ul li a .eventText p {
-  margin-top: 10px;
-}
-
-@media (min-width: 1300px) {
-  .seasonPageRightHalf ul li a .eventText h3, .seasonPageRightHalf ul li a .eventText p {
-    font-size: 1.5em;
-  }
-}
-
-@media (max-width: 615px) {
-  .seasonPageRightHalf ul li a .eventText p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
-
-.seasonPageRightHalf ul li a span {
-  width: 80px;
-  padding: 30px 0 0;
-  margin-left: auto;
-  text-align: center;
-  font-weight: bold;
-  display: inline-block;
-  background-color: #dfd5ed;
-  border-radius: 5px;
-  border-left: double 3px #5a3c87;
-}
-
-.seasonPageRightHalf ul li a:hover span {
-  background-color: #815db7;
-}
-
-@media (min-width: 615px) {
-  .seasonPageRightHalf {
-    padding: 50px 0px 20px 30px;
-    max-width: 384px;
-  }
-}
-
-@media (min-width: 768px) {
-  .seasonPageRightHalf {
-    max-width: none;
-  }
-}
-
-.seasonPageLeftHalf {
-  background-color: white;
-  padding: 50px 10px 30px;
-}
-
-.seasonPageLeftHalf h1 {
-  text-align: center;
-}
-
-.seasonPageLeftHalf h1:first-child {
-  margin: 20px 0 10px;
-}
-
-@media (min-width: 615px) {
-  .seasonPageLeftHalf {
-    padding: 50px 30px 30px 10px;
-    max-width: 384px;
-  }
-}
-
-@media (min-width: 768px) {
-  .seasonPageLeftHalf {
-    max-width: none;
-  }
-}
-
-.seasonPageLeftHalf .dotBorder {
-  margin: 20px auto 10px;
-  border: dotted 3px gray;
-}
-
-.seasonPageLeftHalf .dotBorder p {
-  padding: 10px;
-  margin: 0;
-  text-align: center;
-}
-
-.seasonPageLeftHalf .dotBorder a {
-  text-decoration: underline;
-  color: #5a3c87;
-}
-
-.seasonPageLeftHalf ul li {
-  display: flex;
-  width: 100%;
-  height: 200px;
-  margin-top: 15px;
-  border: dotted 3px #7bda0e;
-  border-radius: 5px;
-  background-color: #d5ffa6;
-}
-
-.seasonPageLeftHalf ul li .image {
-  flex-grow: 1;
-  width: 50%;
-  height: 175px;
-  margin: 10px 0 6px 15px;
-  box-shadow: 0 0 3px 4px #d5ffa6 inset;
-  background-size: cover;
-  background-position: center center;
-}
-
-.seasonPageLeftHalf ul li .image1 {
-  background-image: url(../images/1.jpg);
-}
-
-.seasonPageLeftHalf ul li .image2 {
-  background-image: url(../images/2.jpg);
-}
-
-.seasonPageLeftHalf ul li .image3 {
-  background-image: url(../images/3.jpg);
-}
-
-.seasonPageLeftHalf ul li .seasonText {
-  flex-grow: 1;
-  width: 42%;
-  text-align: center;
-  margin-right: 10px;
-}
-
-.seasonPageLeftHalf ul li .seasonText p {
-  display: none;
-}
-
-@media (min-width: 615px) {
-  .seasonPageLeftHalf ul li .seasonText p {
-    display: block;
-    margin: 25px 0 30px;
-  }
-}
-
-.seasonPageLeftHalf ul li .seasonText a {
-  font-size: .8em;
-  font-weight: bold;
-  display: inline-block;
-  background-color: #7bda0e;
-  border-radius: 10px;
-  border: double 3px #d5ffa6;
-  padding: 10px 0;
-  width: 80px;
-}
-
-.seasonPageLeftHalf ul li .seasonText a:last-child {
-  margin-left: 10px;
-}
-
-.seasonPageLeftHalf ul li .seasonText a:hover {
-  background-color: white;
-  border: double 3px #7bda0e;
 }

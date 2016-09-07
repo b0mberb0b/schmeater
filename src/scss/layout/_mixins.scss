@@ -1,8 +1,22 @@
+/* base mixin for all sections on Season and Index pages */
+@mixin partContent($color) {
+  @extend %flex-grow-1;
+  @extend %flex;
+  @extend %flex-direction-column;
+  background-color: $color;
+  h1 {
+    text-align: center;
+    &:first-child {
+      margin: 20px 0 10px;
+    }
+  }
+}
+
 /***********************************************************************
                             EVENT SECTION CSS
 ***********************************************************************/
 /* container and individual box css for theater shows/events */
-@mixin eventBar($screenWidth: none) {
+@mixin eventBar {
   h1 {
     @extend %resetSize;
     font-size: 3em;
@@ -41,24 +55,14 @@
         .eventText {
           margin: 0 10px 0 20px;
           font-size: 0.8em;
+          overflow: hidden;
           h3 {
             font-size: 1.4em;
             font-weight: bold;
           }
           h3, p {
             margin-top: 10px;
-            @if($screenWidth != none) {
-              @media (min-width: $screenWidth) {
-                font-size: 1.5em;
-              }
-            }
-          }
-          p {
-            @media (max-width: $small-size) {
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
+            font-size: 1.5em;
           }
         }
         span {

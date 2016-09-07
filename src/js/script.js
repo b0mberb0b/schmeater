@@ -17,8 +17,17 @@ $('body').bind('click', function(e) {
 //dynamically changes event tab paragraph size so ellipses look good
 var eventText = $('.eventText');
 $( window ).bind('resize', function(){
-    var width = $('.eventItem').width();
-    eventText.width( width - 175 );
+    var content = $('.eventContent').width();
+    if(content > 797) {
+      eventText.width( content/2 - 212 );
+      console.log("working!");
+    } else {
+      eventText.width( content - 212 );
+    }
 });
-
-eventText.width( $('.eventItem').width() - 175 );
+var content = $('.eventContent').width();
+if(content > 797) {
+  eventText.width( content/2 - 212 );
+} else {
+  eventText.width( content - 212 );
+}

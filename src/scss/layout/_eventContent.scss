@@ -1,0 +1,138 @@
+/***********************************************************************
+                          SEASON PAGE SECTIONS
+***********************************************************************/
+/* styling for Events section on Season Page */
+.upcomingEvents {
+  @include partContent($lightGreen);
+  @include eventBar;
+  padding: 0 10px 30px;
+  @media (min-width: $eventsToRows) {
+    padding: 50px 0px 20px 20px;
+  }
+}
+/* styling for Season section on Season Page */
+.currentSeason {
+  @include partContent(white);
+  padding: 50px 10px 30px;
+  @media (min-width: $eventsToRows) {
+    padding: 50px 20px 30px 10px;
+  }
+  .dotBorder {
+    margin: 20px auto 10px;
+    border: dotted 3px gray;
+    p {
+      padding: 10px;
+      margin: 0;
+      text-align: center;
+    }
+    a {
+      text-decoration: underline;
+      color: $purple;
+    }
+  }
+  ul li {
+      display: flex;
+      width: 100%;
+      height: 200px;
+      margin-top: 15px;
+      border: dotted 3px $green;
+      border-radius: 5px;
+      background-color: $lightSatGreen;
+      .image {
+        flex-grow: 1;
+        width: 50%;
+        height: 175px;
+        margin: 10px 0 6px 15px;
+        box-shadow: 0 0 3px 4px $lightSatGreen inset;
+        background-size: cover;
+        background-position: center center;
+      }
+      .image1 {
+        background-image: url(../images/1.jpg);
+      }
+      .image2 {
+        background-image: url(../images/2.jpg);
+      }
+      .image3 {
+        background-image: url(../images/3.jpg);
+      }
+      .seasonText {
+        flex-grow: 1;
+        width: 42%;
+        text-align: center;
+        margin: 0 10px;
+        .title {
+          height: 40px;
+        }
+        h3 {
+          font-weight: bold;
+          @media (max-width: 350px) {
+            font-size: 1.4em;
+          }
+        }
+        p {
+          margin: 25px 0 10px;
+          @media (max-width: 350px) {
+            font-size: .85em;
+          }
+        }
+        a {
+          font-size: .9em;
+          font-weight: bold;
+          display: inline-block;
+          background-color: $green;
+          border-radius: 10px;
+          border: double 3px $lightSatGreen;
+          width: 100%;
+          padding: 3px 0;
+          margin-bottom: 5px;
+          /* makes buttons wider and shorter at sizes it would overflow */
+          @media (min-width: 442px) and (max-width: $eventsToRows) {
+            padding: 10px 0;
+            width: 80px;
+          }
+          @media (min-width: 1005px) {
+            padding: 10px 0;
+            width: 80px;
+          }
+          &:first-of-type {
+            margin-right: 10px;
+            @media (min-width: $eventsToRows) and (max-width: $large-size) {
+              margin-right: 0;
+            }
+          }
+          &:hover {
+            background-color: white;
+            border: double 3px $green;
+          }
+        }
+      }
+  }
+}
+
+.indexUpcoming {
+  @include partContent($lightGreen);
+  @include flex-basis($wideWidth*9/10);
+  padding: 10px 0px 20px 10px;
+  @include eventBar;
+}
+.indexCalendar {
+  @include partContent(white);
+  padding: 10px 10px 20px 30px;
+  @include flex-basis($wideWidth/5);
+}
+.indexGallery {
+  @include partContent(white);
+  @include flex-basis($wideWidth/4);
+  padding: 10px 30px 20px 10px;
+}
+.indexPress {
+  @include partContent($lightGreen);
+  @include flex-basis($wideWidth/4);
+  padding: 10px 10px 20px 10px;
+}
+.indexOther {
+  @include partContent(white);
+  @include flex-basis($wideWidth/4);
+  padding: 10px 10px 20px 30px;
+}
