@@ -8,12 +8,16 @@ header {
   //holds the website title and is a clickable link to homepage
     a {
       background-color: $green;
-      height: 175px;
+      height: 135px;
       text-align: center;
       width: 100%;
       h1 {
+        @media (min-width: 365px) {
+          padding-top: 15px;
+        }
+
         @media (min-width: 500px) {
-          padding-top: 24px;
+          padding-top: 5px;
           font-size: 4em;
         }
         color: $purple;
@@ -33,27 +37,106 @@ header {
                               FOOTER CSS
 ***********************************************************************/
 footer {
-  text-align: center;
-  background-color: $green;
   @extend %flex;
-  .container {
-    @include align-self(center);
-    padding: 11px 15px;
-    h3 {
-      @extend %resetSize;
-      text-align: right;
-      font-size: 1.7em;
-      font-family: 'Josefin Sans', sans-serif;
+  @extend %flex-direction-column;
+  background-color: $purple;
+  color: white;
+  text-align: center;
+  ul {
+    margin: 8px 0;
+    font-size: .8em;
+    @media (min-width: $small-size) {
+      font-size: 1em;
+      margin-bottom: 0;
+    }
+    li {
+      display: inline;
+      &::after {
+        content: " | ";
+        color: $green;
+      }
+      &:last-child {
+        &::after {
+          content: " ";
+        }
+      }
+      a {
+        color: white;
+        &:hover {
+          color: $green;
+        }
+      }
+    }
+  }
+  .footerInfo {
+    @extend %flex-grow-1;
+    @extend %flex;
+    @include align-items(center);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+
+    img {
+      width: 60px;
+      margin: 11px 15px;
     }
     p {
       @extend %resetSize;
+      margin-right: 25px;
       line-height: 1.5;
-      text-align: left;
+      font-size: .9em;
+      &:first-child {
+        font-size: 1.1em;
+      }
+    }
+    span {
+      font-weight: bold;
+    }
+    form {
+      @media (max-width: $small-size) {
+        display: none;
+      }
+      label {
+        font-weight: 400;
+      }
+    }
+    .links {
+      a {
+        color: white;
+        &:hover {
+          color: $green;
+        }
+      }
+      span {
+        display: inline-block;
+        border-radius: 5px;
+        width: 29px;
+        height: 29px;
+        margin-left: 15px;
+      }
+      .fb {
+        background-image: url(../images/fb-white.png);
+        background-size: cover;
+        background-position: center center;
+        &:hover {
+          background-image: url(../images/fb-green.png);
+        }
+      }
+      .tw {
+        background-image: url(../images/tw-white.png);
+        background-size: cover;
+        background-position: center center;
+        &:hover {
+          background-image: url(../images/tw-green.png);
+        }
+      }
     }
   }
   small {
-    @include align-self(flex-end);
     font-size: .7em;
+    margin-top: 8px;
+    @media (min-width: $small-size) {
+      margin-top: 0;
+    }
   }
-
 }

@@ -31,6 +31,9 @@ $eventsToRows: 815px;
 %flex-wrap {
   @include flex-wrap(wrap);
 }
+%justify-content-around {
+  @include justify-content(space-around);
+}
 
 /***********************************************************************
                       GLOBAL STYLISTIC CHANGES
@@ -41,6 +44,9 @@ $eventsToRows: 815px;
 }
 * {
   box-sizing: border-box;
+}
+html, body {
+  overflow-x: hidden;
 }
 body {
   @extend %flex;

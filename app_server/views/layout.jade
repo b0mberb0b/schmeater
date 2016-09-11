@@ -29,10 +29,27 @@ html(lang="en")
 
     block content
     footer
-      .container
-        h3 Theater
-        h3 Schmeater
-      .container
-        p Address: 2125 3rd Ave, Seattle, WA 98121
-        p Phone: (206) 324-5801
-      small &copy; 2016 Theater Schmeater, All Rights Reserved
+      ul
+        li
+          a(href="/about/#contact") CONTACT US
+        li
+          a(href="/about/#tickets") TICKET INFO
+        li
+          a(href="/about/#directions") DIRECTIONS
+        li
+          a(href="/support/#donate") DONATE
+      .footerInfo
+        img(src="/images/badge-green-purple-back.png" alt="Theater Schmeater Logo")
+        .div
+          p #[span Theater Schmeater]
+          p #[span Address: ] 2125 3rd Ave, Seattle, WA 98121
+          p #[span Phone: ] (206) 324-5801
+        form
+          label Join Our Newsletter
+          input#newsletter.form-control(type="email" aria-descr placeholder="oncemonthly@email.com")
+        .links
+          a(href="https://www.facebook.com/TheSchmee/")
+            span.fb
+          a(href="https://twitter.com/TheaterSchmee")
+            span.tw
+      small &copy; 2016 Theater Schmeater, website by Nicholas Smit

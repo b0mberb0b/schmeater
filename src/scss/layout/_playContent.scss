@@ -1,0 +1,178 @@
+/* trick to extend green bar to sides without taking up the space */
+.greenBar {
+  margin: 0 -9999rem;
+  padding: 0.25rem 9999rem;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 3.5em;
+  background-color: $green;
+  min-height: 58px;
+}
+.centralText {
+  text-align: center;
+  @media (min-width: $medium-size) {
+    width: 500px;
+  }
+  @extend %resetSize;
+  .dottedBorders {
+    margin: 0;
+    background-color: $lightGreen;
+    border-left: dotted 3px $green;
+    border-right: dotted 3px $green;
+    &:first-child {
+      padding-top: 10px;
+      border-top-right-radius: 50px;
+      border-top-left-radius: 50px;
+      border-top: dotted 3px $green;
+    }
+    &:last-child {
+      padding-bottom: 10px;
+      border-bottom-right-radius: 50px;
+      border-bottom-left-radius: 50px;
+      border-bottom: dotted 3px $green;
+    }
+  }
+}
+.arrow {
+  @extend %flex;
+  align-items: center;
+  margin-bottom: 10px;
+  @media (min-width: $small-size) {
+    margin-bottom: 0;
+  }
+  z-index: 50;
+  color: white;
+  font-size: 1.3em;
+  transition: color .2s;
+  &:hover {
+    color: $purple;
+  }
+  &:first-child {
+    margin-left: auto;
+  }
+  &:last-child {
+    margin-right: auto;
+  }
+  span {
+    display: inline-block;
+  }
+  .glyphicon {
+    font-size: 50px;
+  }
+}
+/***********************************************************************
+                              PLAY PAGE
+***********************************************************************/
+/*  */
+#playHeaderSmall {
+  margin-top: 60px;
+  padding: 20px 0;
+  @media (min-width: $small-size) {
+    display: none;
+  }
+  .innerArrows {
+    @extend %flex;
+    background-color: $green;
+  }
+}
+
+#playHeaderBig {
+  @extend %flex-grow-1;
+  @extend %flex;
+  justify-content: space-around;
+  margin-top: 60px;
+  padding: 20px 0;
+  @media (max-width: $small-size) {
+    display: none;
+  }
+}
+
+
+
+#playInfo {
+  width: 100%;
+  margin-bottom: 90px;
+  margin-top: -60px;
+  padding: 65px 30px 30px;
+  @media (min-width: $large-size) {
+    width: 67%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: -1;
+    border: solid 4px $lightPurple;
+    border-top: none;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    box-shadow: 3px 3px 6px 8px $lighterPurple, -3px 3px 6px 8px $lighterPurple;
+  }
+  text-align: center;
+  .div {
+    @extend %flex;
+    @extend %flex-wrap;
+    #poster {
+      @extend %flex-grow-1;
+      flex-basis: 250px;
+      height: 200px;
+      @media (min-width: $small-size) {
+        height: 275px;
+      }
+      @media (min-width: $small-size) {
+        margin: 30px 0 0 20px;
+      }
+      box-shadow: 0 0 3px 4px white inset;
+      background-size: cover;
+      background-position: center center;
+    }
+    .image1 {
+      background-image: url(../images/1.jpg);
+    }
+    #ticketInfo {
+      @media (min-width: $small-size) {
+        margin: 0 60px 0 40px;
+      }
+      @extend %flex-grow-1;
+      flex-basis: 250px;
+      hr {
+        width: 150px;
+        border-color: $green;
+      }
+      button {
+        margin-top: 15px;
+      }
+      a {
+        @extend %greenButton;
+        width: 60%;
+        padding: 10px 0;
+      }
+    }
+  }
+  h1 {
+    text-align: center;
+    @media (min-width: $small-size) {
+      text-align: left;
+      margin: 30px 0 0 30px;
+    }
+  }
+  ul {
+    @extend %flex;
+    @extend %flex-wrap;
+    justify-content: flex-start;
+    margin-bottom: 50px;
+    li {
+      text-align: center;
+      width: 100%;
+      font-size: .8em;
+      @media(min-width: $small-size - 150) {
+        width: 40%;
+      }
+      @media(min-width: $medium-size) {
+        max-width: 180px;
+      }
+    }
+  }
+  #endBar {
+    @extend %flex-grow-1;
+    @extend %flex;
+    justify-content: space-around;
+    margin-bottom: -50px;
+  }
+}

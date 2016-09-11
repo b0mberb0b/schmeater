@@ -8,6 +8,7 @@ var pressPageController = require('../controllers/pressPage');
 var supportPageController = require('../controllers/supportPage');
 var galleryPageController = require('../controllers/galleryPage');
 var aboutPageController = require('../controllers/aboutPage');
+var playPageController = require('../controllers/playPage');
 
 /* when url request sent, router gets the right page, activates variable method. */
 router.get('/', homePageController.getPage);
@@ -16,5 +17,6 @@ router.get('/press', pressPageController.getPage);
 router.get('/support', supportPageController.getPage);
 router.get('/about', aboutPageController.getPage);
 router.get('/gallery', galleryPageController.getPage);
+router.get('/play', playPageController.getPage);
 
 module.exports = router;

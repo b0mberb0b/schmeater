@@ -12,6 +12,22 @@
   }
 }
 
+%greenButton {
+  font-size: .9em;
+  font-weight: bold;
+  display: inline-block;
+  background-color: $green;
+  border-radius: 10px;
+  border: double 3px $lightSatGreen;
+  width: 100%;
+  padding: 3px 0;
+  margin-bottom: 5px;
+  &:hover {
+    background-color: white;
+    border: double 3px $green;
+  }
+}
+
 /***********************************************************************
                             EVENT SECTION CSS
 ***********************************************************************/

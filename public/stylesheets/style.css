@@ -680,12 +680,12 @@ textarea {
 /***********************************************************************
                   EXTENDERS, cuz wow flex takes up room
 ***********************************************************************/
-ul, header, footer .container h3, footer .container p, .upcomingEvents h1, .upcomingEvents ul li a .dateBox h3, .upcomingEvents ul li a .dateBox p, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p {
+ul, header, footer .footerInfo p, .upcomingEvents h1, .upcomingEvents ul li a .dateBox h3, .upcomingEvents ul li a .dateBox p, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p, .centralText {
   padding: 0;
   margin: 0;
 }
 
-body, header, footer, .eventContent, .otherContent, .scrollContent ul, .pressContent ul, .upcomingEvents, .upcomingEvents ul, .upcomingEvents ul li a, .currentSeason, .indexUpcoming, .indexUpcoming ul, .indexUpcoming ul li a, .indexCalendar, .indexGallery, .indexPress, .indexOther {
+body, header, footer, footer .footerInfo, .eventContent, .otherContent, .scrollContent ul, .pressContent ul, .upcomingEvents, .upcomingEvents ul, .upcomingEvents ul li a, .currentSeason, .indexUpcoming, .indexUpcoming ul, .indexUpcoming ul li a, .indexCalendar, .indexGallery, .indexPress, .indexOther, .arrow, #playHeaderSmall .innerArrows, #playHeaderBig, #playInfo .div, #playInfo ul, #playInfo #endBar {
   display: -webkit-box;
   display: -moz-box;
   display: box;
@@ -695,7 +695,7 @@ body, header, footer, .eventContent, .otherContent, .scrollContent ul, .pressCon
   display: flex;
 }
 
-body, header, .eventContent, .otherContent, .pressContent ul, .upcomingEvents, .currentSeason, .indexUpcoming, .indexCalendar, .indexGallery, .indexPress, .indexOther {
+body, header, footer, .eventContent, .otherContent, .pressContent ul, .upcomingEvents, .currentSeason, .indexUpcoming, .indexCalendar, .indexGallery, .indexPress, .indexOther {
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
   box-orient: vertical;
@@ -708,7 +708,7 @@ body, header, .eventContent, .otherContent, .pressContent ul, .upcomingEvents, .
   -ms-flex-direction: column;
 }
 
-header a h1, .background, .scrollContent, .pressContent, .upcomingEvents, .upcomingEvents ul li, .currentSeason, .indexUpcoming, .indexUpcoming ul li, .indexCalendar, .indexGallery, .indexPress, .indexOther {
+header a h1, footer .footerInfo, .background, .scrollContent, .pressContent, .upcomingEvents, .upcomingEvents ul li, .currentSeason, .indexUpcoming, .indexUpcoming ul li, .indexCalendar, .indexGallery, .indexPress, .indexOther, #playHeaderBig, #playInfo .div #poster, #playInfo .div #ticketInfo, #playInfo #endBar {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
@@ -718,7 +718,7 @@ header a h1, .background, .scrollContent, .pressContent, .upcomingEvents, .upcom
   flex: 1;
 }
 
-.eventContent, .otherContent, .scrollContent ul, .upcomingEvents ul, .indexUpcoming ul {
+.eventContent, .otherContent, .scrollContent ul, .upcomingEvents ul, .indexUpcoming ul, #playInfo .div, #playInfo ul {
   -webkit-box-lines: multiple;
   -moz-box-lines: multiple;
   box-lines: multiple;
@@ -738,6 +738,10 @@ header a h1, .background, .scrollContent, .pressContent, .upcomingEvents, .upcom
 
 * {
   box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 body {
@@ -785,6 +789,23 @@ a:hover {
 }
 
 /* base mixin for all sections on Season and Index pages */
+.currentSeason ul li .seasonText a, #playInfo .div #ticketInfo a {
+  font-size: .9em;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #7bda0e;
+  border-radius: 10px;
+  border: double 3px #d5ffa6;
+  width: 100%;
+  padding: 3px 0;
+  margin-bottom: 5px;
+}
+
+.currentSeason ul li .seasonText a:hover, #playInfo .div #ticketInfo a:hover {
+  background-color: white;
+  border: double 3px #7bda0e;
+}
+
 /***********************************************************************
                             EVENT SECTION CSS
 ***********************************************************************/
@@ -799,7 +820,7 @@ bars on small devices, true means a purple scheme, blank turns to false and rend
 ***********************************************************************/
 header a {
   background-color: #7bda0e;
-  height: 175px;
+  height: 135px;
   text-align: center;
   width: 100%;
 }
@@ -808,9 +829,15 @@ header a h1 {
   color: #5a3c87;
 }
 
+@media (min-width: 365px) {
+  header a h1 {
+    padding-top: 15px;
+  }
+}
+
 @media (min-width: 500px) {
   header a h1 {
-    padding-top: 24px;
+    padding-top: 5px;
     font-size: 4em;
   }
 }
@@ -897,35 +924,133 @@ header .main-nav .navbar ul li a:hover {
                               FOOTER CSS
 ***********************************************************************/
 footer {
+  background-color: #5a3c87;
+  color: white;
   text-align: center;
-  background-color: #7bda0e;
 }
 
-footer .container {
-  -webkit-align-self: center;
-  -moz-align-self: center;
-  align-self: center;
-  -ms-flex-item-align: center;
-  padding: 11px 15px;
+footer ul {
+  margin: 8px 0;
+  font-size: .8em;
 }
 
-footer .container h3 {
-  text-align: right;
-  font-size: 1.7em;
-  font-family: 'Josefin Sans', sans-serif;
+@media (min-width: 615px) {
+  footer ul {
+    font-size: 1em;
+    margin-bottom: 0;
+  }
 }
 
-footer .container p {
-  line-height: 1.5;
+footer ul li {
+  display: inline;
+}
+
+footer ul li::after {
+  content: " | ";
+  color: #7bda0e;
+}
+
+footer ul li:last-child::after {
+  content: " ";
+}
+
+footer ul li a {
+  color: white;
+}
+
+footer ul li a:hover {
+  color: #7bda0e;
+}
+
+footer .footerInfo {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  margin-left: auto;
+  margin-right: auto;
   text-align: left;
 }
 
+footer .footerInfo img {
+  width: 60px;
+  margin: 11px 15px;
+}
+
+footer .footerInfo p {
+  margin-right: 25px;
+  line-height: 1.5;
+  font-size: .9em;
+}
+
+footer .footerInfo p:first-child {
+  font-size: 1.1em;
+}
+
+footer .footerInfo span {
+  font-weight: bold;
+}
+
+@media (max-width: 615px) {
+  footer .footerInfo form {
+    display: none;
+  }
+}
+
+footer .footerInfo form label {
+  font-weight: 400;
+}
+
+footer .footerInfo .links a {
+  color: white;
+}
+
+footer .footerInfo .links a:hover {
+  color: #7bda0e;
+}
+
+footer .footerInfo .links span {
+  display: inline-block;
+  border-radius: 5px;
+  width: 29px;
+  height: 29px;
+  margin-left: 15px;
+}
+
+footer .footerInfo .links .fb {
+  background-image: url(../images/fb-white.png);
+  background-size: cover;
+  background-position: center center;
+}
+
+footer .footerInfo .links .fb:hover {
+  background-image: url(../images/fb-green.png);
+}
+
+footer .footerInfo .links .tw {
+  background-image: url(../images/tw-white.png);
+  background-size: cover;
+  background-position: center center;
+}
+
+footer .footerInfo .links .tw:hover {
+  background-image: url(../images/tw-green.png);
+}
+
 footer small {
-  -webkit-align-self: flex-end;
-  -moz-align-self: flex-end;
-  align-self: flex-end;
-  -ms-flex-item-align: end;
   font-size: .7em;
+  margin-top: 8px;
+}
+
+@media (min-width: 615px) {
+  footer small {
+    margin-top: 0;
+  }
 }
 
 /***********************************************************************
@@ -1474,15 +1599,6 @@ footer small {
 }
 
 .currentSeason ul li .seasonText a {
-  font-size: .9em;
-  font-weight: bold;
-  display: inline-block;
-  background-color: #7bda0e;
-  border-radius: 10px;
-  border: double 3px #d5ffa6;
-  width: 100%;
-  padding: 3px 0;
-  margin-bottom: 5px;
   /* makes buttons wider and shorter at sizes it would overflow */
 }
 
@@ -1508,11 +1624,6 @@ footer small {
   .currentSeason ul li .seasonText a:first-of-type {
     margin-right: 0;
   }
-}
-
-.currentSeason ul li .seasonText a:hover {
-  background-color: white;
-  border: double 3px #7bda0e;
 }
 
 .indexUpcoming {
@@ -1680,4 +1791,220 @@ footer small {
 
 .indexOther h1:first-child {
   margin: 20px 0 10px;
+}
+
+/* trick to extend green bar to sides without taking up the space */
+.greenBar {
+  margin: 0 -9999rem;
+  padding: 0.25rem 9999rem;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 3.5em;
+  background-color: #7bda0e;
+  min-height: 58px;
+}
+
+.centralText {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .centralText {
+    width: 500px;
+  }
+}
+
+.centralText .dottedBorders {
+  margin: 0;
+  background-color: #d5faab;
+  border-left: dotted 3px #7bda0e;
+  border-right: dotted 3px #7bda0e;
+}
+
+.centralText .dottedBorders:first-child {
+  padding-top: 10px;
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  border-top: dotted 3px #7bda0e;
+}
+
+.centralText .dottedBorders:last-child {
+  padding-bottom: 10px;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom: dotted 3px #7bda0e;
+}
+
+.arrow {
+  align-items: center;
+  margin-bottom: 10px;
+  z-index: 50;
+  color: white;
+  font-size: 1.3em;
+  transition: color .2s;
+}
+
+@media (min-width: 615px) {
+  .arrow {
+    margin-bottom: 0;
+  }
+}
+
+.arrow:hover {
+  color: #5a3c87;
+}
+
+.arrow:first-child {
+  margin-left: auto;
+}
+
+.arrow:last-child {
+  margin-right: auto;
+}
+
+.arrow span {
+  display: inline-block;
+}
+
+.arrow .glyphicon {
+  font-size: 50px;
+}
+
+/***********************************************************************
+                              PLAY PAGE
+***********************************************************************/
+/*  */
+#playHeaderSmall {
+  margin-top: 60px;
+  padding: 20px 0;
+}
+
+@media (min-width: 615px) {
+  #playHeaderSmall {
+    display: none;
+  }
+}
+
+#playHeaderSmall .innerArrows {
+  background-color: #7bda0e;
+}
+
+#playHeaderBig {
+  justify-content: space-around;
+  margin-top: 60px;
+  padding: 20px 0;
+}
+
+@media (max-width: 615px) {
+  #playHeaderBig {
+    display: none;
+  }
+}
+
+#playInfo {
+  width: 100%;
+  margin-bottom: 90px;
+  margin-top: -60px;
+  padding: 65px 30px 30px;
+  text-align: center;
+}
+
+@media (min-width: 1004px) {
+  #playInfo {
+    width: 67%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: -1;
+    border: solid 4px #815db7;
+    border-top: none;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    box-shadow: 3px 3px 6px 8px #dfd5ed, -3px 3px 6px 8px #dfd5ed;
+  }
+}
+
+#playInfo .div #poster {
+  flex-basis: 250px;
+  height: 200px;
+  box-shadow: 0 0 3px 4px white inset;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media (min-width: 615px) {
+  #playInfo .div #poster {
+    height: 275px;
+  }
+}
+
+@media (min-width: 615px) {
+  #playInfo .div #poster {
+    margin: 30px 0 0 20px;
+  }
+}
+
+#playInfo .div .image1 {
+  background-image: url(../images/1.jpg);
+}
+
+#playInfo .div #ticketInfo {
+  flex-basis: 250px;
+}
+
+@media (min-width: 615px) {
+  #playInfo .div #ticketInfo {
+    margin: 0 60px 0 40px;
+  }
+}
+
+#playInfo .div #ticketInfo hr {
+  width: 150px;
+  border-color: #7bda0e;
+}
+
+#playInfo .div #ticketInfo button {
+  margin-top: 15px;
+}
+
+#playInfo .div #ticketInfo a {
+  width: 60%;
+  padding: 10px 0;
+}
+
+#playInfo h1 {
+  text-align: center;
+}
+
+@media (min-width: 615px) {
+  #playInfo h1 {
+    text-align: left;
+    margin: 30px 0 0 30px;
+  }
+}
+
+#playInfo ul {
+  justify-content: flex-start;
+  margin-bottom: 50px;
+}
+
+#playInfo ul li {
+  text-align: center;
+  width: 100%;
+  font-size: .8em;
+}
+
+@media (min-width: 465px) {
+  #playInfo ul li {
+    width: 40%;
+  }
+}
+
+@media (min-width: 768px) {
+  #playInfo ul li {
+    max-width: 180px;
+  }
+}
+
+#playInfo #endBar {
+  justify-content: space-around;
+  margin-bottom: -50px;
 }

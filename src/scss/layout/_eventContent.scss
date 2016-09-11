@@ -77,15 +77,7 @@
           }
         }
         a {
-          font-size: .9em;
-          font-weight: bold;
-          display: inline-block;
-          background-color: $green;
-          border-radius: 10px;
-          border: double 3px $lightSatGreen;
-          width: 100%;
-          padding: 3px 0;
-          margin-bottom: 5px;
+          @extend %greenButton;
           /* makes buttons wider and shorter at sizes it would overflow */
           @media (min-width: 442px) and (max-width: $eventsToRows) {
             padding: 10px 0;
@@ -100,10 +92,6 @@
             @media (min-width: $eventsToRows) and (max-width: $large-size) {
               margin-right: 0;
             }
-          }
-          &:hover {
-            background-color: white;
-            border: double 3px $green;
           }
         }
       }

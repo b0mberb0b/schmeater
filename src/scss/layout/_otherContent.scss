@@ -13,7 +13,7 @@
 .background {
   @extend %flex-grow-1;
   width: 100%;
-}
+} 
 .whitePurple {
   @include pageColor(white, $lighterPurple);
 }
