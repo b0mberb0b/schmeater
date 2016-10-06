@@ -680,7 +680,7 @@ textarea {
 /***********************************************************************
                   EXTENDERS, cuz wow flex takes up room
 ***********************************************************************/
-ul, header, footer .container h3, footer .container p, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p, .seasonPageRightHalf h1, .seasonPageRightHalf ul li a .dateBox h3, .seasonPageRightHalf ul li a .dateBox p, .seasonPageLeftHalf ul li .textBox a {
+ul, header, footer .container h3, footer .container p, .indexUpcoming h1, .indexUpcoming ul li a .dateBox h3, .indexUpcoming ul li a .dateBox p, .seasonPageRightHalf h1, .seasonPageRightHalf ul li a .dateBox h3, .seasonPageRightHalf ul li a .dateBox p, .seasonPageLeftHalf ul li .seasonText a {
   padding: 0;
   margin: 0;
 }
@@ -776,6 +776,12 @@ a:hover {
 .affix {
   top: 0;
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .affix {
+    position: relative;
+  }
 }
 
 /***********************************************************************
@@ -1136,7 +1142,13 @@ footer small {
   }
 }
 
-.scrollContent h2:before {
+.scrollContent h2 {
+  font-size: 2.5em;
+  font-family: titleFont;
+  margin-bottom: 6px;
+}
+
+.scrollContent h2 h2:before {
   display: block;
   content: " ";
   margin-top: -115px;
@@ -1145,15 +1157,13 @@ footer small {
 }
 
 @media (min-width: 615px) {
-  .scrollContent {
-    padding: 0 20px 30px 50px;
-  }
-  .scrollContent h2:before {
-    display: none;
+  .scrollContent h2 h2:before {
+    margin-top: -65px;
+    height: 65px;
   }
 }
 
-.scrollContent p {
+.scrollContent > p {
   margin-right: 30px;
 }
 
@@ -1161,16 +1171,45 @@ footer small {
   margin-right: 2.5em;
 }
 
+.scrollContent #staff, .scrollContent #board {
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 615px) {
+  .scrollContent #staff, .scrollContent #board {
+    text-align: left;
+  }
+}
+
+.scrollContent ul {
+  justify-content: space-around;
+}
+
 .scrollContent ul li {
-  width: 245px;
-  margin-right: 25px;
+  text-align: center;
+  width: 100%;
+  font-size: .8em;
   margin-bottom: 15px;
+}
+
+@media (min-width: 465px) {
+  .scrollContent ul li {
+    width: 40%;
+  }
+}
+
+@media (min-width: 768px) {
+  .scrollContent ul li {
+    max-width: 265px;
+    font-size: 1em;
+  }
 }
 
 @media (min-width: 1135px) {
   .scrollContent ul li:nth-child(3n) {
     width: 200px;
-    margin-right: 0;
+    margin-right: 25px;
   }
 }
 
@@ -1188,7 +1227,13 @@ footer small {
   }
 }
 
-.pressContent h2:before {
+.pressContent h2 {
+  font-size: 2.5em;
+  font-family: titleFont;
+  margin-bottom: 6px;
+}
+
+.pressContent h2 h2:before {
   display: block;
   content: " ";
   margin-top: -115px;
@@ -1197,11 +1242,9 @@ footer small {
 }
 
 @media (min-width: 615px) {
-  .pressContent {
-    padding: 0 20px 30px 50px;
-  }
-  .pressContent h2:before {
-    display: none;
+  .pressContent h2 h2:before {
+    margin-top: -65px;
+    height: 65px;
   }
 }
 
@@ -1299,14 +1342,26 @@ footer small {
   line-height: 25px;
 }
 
-.indexUpcoming ul li a .textBox {
-  width: 70%;
+.indexUpcoming ul li a .eventText {
   margin: 0 10px 0 20px;
   font-size: 0.8em;
 }
 
-.indexUpcoming ul li a .textBox h3, .indexUpcoming ul li a .textBox p {
+.indexUpcoming ul li a .eventText h3 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.indexUpcoming ul li a .eventText h3, .indexUpcoming ul li a .eventText p {
   margin-top: 10px;
+}
+
+@media (max-width: 615px) {
+  .indexUpcoming ul li a .eventText p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .indexUpcoming ul li a span {
@@ -1395,11 +1450,7 @@ footer small {
 
 .seasonPageRightHalf {
   background-color: #d5faab;
-  -webkit-flex-basis: 475px;
-  -moz-flex-basis: 475px;
-  flex-basis: 475px;
-  -ms-flex-preferred-size: 475px;
-  padding: 10px 10px 20px 30px;
+  padding: 0 10px 30px;
 }
 
 .seasonPageRightHalf h1 {
@@ -1460,19 +1511,31 @@ footer small {
   line-height: 25px;
 }
 
-.seasonPageRightHalf ul li a .textBox {
-  width: 70%;
+.seasonPageRightHalf ul li a .eventText {
   margin: 0 10px 0 20px;
   font-size: 0.8em;
 }
 
-.seasonPageRightHalf ul li a .textBox h3, .seasonPageRightHalf ul li a .textBox p {
+.seasonPageRightHalf ul li a .eventText h3 {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.seasonPageRightHalf ul li a .eventText h3, .seasonPageRightHalf ul li a .eventText p {
   margin-top: 10px;
 }
 
 @media (min-width: 1300px) {
-  .seasonPageRightHalf ul li a .textBox h3, .seasonPageRightHalf ul li a .textBox p {
+  .seasonPageRightHalf ul li a .eventText h3, .seasonPageRightHalf ul li a .eventText p {
     font-size: 1.5em;
+  }
+}
+
+@media (max-width: 615px) {
+  .seasonPageRightHalf ul li a .eventText p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
@@ -1492,13 +1555,22 @@ footer small {
   background-color: #815db7;
 }
 
+@media (min-width: 615px) {
+  .seasonPageRightHalf {
+    padding: 50px 0px 20px 30px;
+    max-width: 384px;
+  }
+}
+
+@media (min-width: 768px) {
+  .seasonPageRightHalf {
+    max-width: none;
+  }
+}
+
 .seasonPageLeftHalf {
   background-color: white;
-  -webkit-flex-basis: 475px;
-  -moz-flex-basis: 475px;
-  flex-basis: 475px;
-  -ms-flex-preferred-size: 475px;
-  padding: 10px 30px 20px 10px;
+  padding: 50px 10px 30px;
 }
 
 .seasonPageLeftHalf h1 {
@@ -1509,12 +1581,33 @@ footer small {
   margin: 20px 0 10px;
 }
 
-.seasonPageLeftHalf > p {
-  width: 500px;
-  padding: 10px;
+@media (min-width: 615px) {
+  .seasonPageLeftHalf {
+    padding: 50px 30px 30px 10px;
+    max-width: 384px;
+  }
+}
+
+@media (min-width: 768px) {
+  .seasonPageLeftHalf {
+    max-width: none;
+  }
+}
+
+.seasonPageLeftHalf .dotBorder {
   margin: 20px auto 10px;
   border: dotted 3px gray;
+}
+
+.seasonPageLeftHalf .dotBorder p {
+  padding: 10px;
+  margin: 0;
   text-align: center;
+}
+
+.seasonPageLeftHalf .dotBorder a {
+  text-decoration: underline;
+  color: #5a3c87;
 }
 
 .seasonPageLeftHalf ul li {
@@ -1549,18 +1642,25 @@ footer small {
   background-image: url(../images/3.jpg);
 }
 
-.seasonPageLeftHalf ul li .textBox {
+.seasonPageLeftHalf ul li .seasonText {
   flex-grow: 1;
   width: 42%;
   text-align: center;
   margin-right: 10px;
 }
 
-.seasonPageLeftHalf ul li .textBox p {
-  margin: 25px 0 30px;
+.seasonPageLeftHalf ul li .seasonText p {
+  display: none;
 }
 
-.seasonPageLeftHalf ul li .textBox a {
+@media (min-width: 615px) {
+  .seasonPageLeftHalf ul li .seasonText p {
+    display: block;
+    margin: 25px 0 30px;
+  }
+}
+
+.seasonPageLeftHalf ul li .seasonText a {
   font-size: .8em;
   font-weight: bold;
   display: inline-block;
@@ -1571,11 +1671,11 @@ footer small {
   width: 80px;
 }
 
-.seasonPageLeftHalf ul li .textBox a:last-child {
+.seasonPageLeftHalf ul li .seasonText a:last-child {
   margin-left: 10px;
 }
 
-.seasonPageLeftHalf ul li .textBox a:hover {
+.seasonPageLeftHalf ul li .seasonText a:hover {
   background-color: white;
   border: double 3px #7bda0e;
 }

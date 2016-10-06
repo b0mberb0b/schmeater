@@ -3,6 +3,33 @@ extends layout
 block content
   .background.whiteGreen
     .content
+      #subNav(data-spy="affix" data-offset-top="175")
+        .navbar.navbar-default.navbar-inner
+          .container-fluid
+            .navbar-header
+              button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#subNavbar', aria-expanded='false', aria-controls='navbar')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              h3 #[span A]BOUT
+            #subNavbar.collapse.navbar-collapse
+              ul
+                li
+                  a(href="#") HISTORY & MISSION
+                li
+                  a(href="#staff") STAFF
+                li
+                  a(href="#board") BOARD OF DIRECTORS
+                li
+                  a(href="#institutes") INSTITUTIONAL SUPPORT
+                li
+                  a(href="#contact") CONTACT US
+                li
+                  a(href="#tickets") TICKETS & DISCOUNTS
+                li
+                  a(href="#directions") DIRECTIONS
+                li
+                  a(href="#") BACK TO TOP
       .scrollContent
         h1 History & Mission
         p Theater Schmeater is tiny stage with a giant presence. It has been around since the dark ages, and there's much more I'm sure to say about it but this is purely filler for the now.
@@ -123,8 +150,8 @@ block content
         hr
         h2#directions Directions
         p Theater Schmeater is located at  2125 3rd Ave, Seattle, WA 98121. Here is a link to Google maps. There will also be an interactive google map here when I get around to it.
-      .rightGreen
-        .rightNav
+      #sideGreen
+        #sideNav
           h1 ABOUT
           ul
             li

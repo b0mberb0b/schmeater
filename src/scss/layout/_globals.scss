@@ -73,4 +73,7 @@ a {
 .affix {
   top: 0;
   width: 100%;
+  @media (min-width: $medium-size) {
+    position: relative;
+  }
 }

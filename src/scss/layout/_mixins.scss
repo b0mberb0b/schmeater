@@ -38,16 +38,26 @@
             line-height: 25px;
           }
         }
-        .textBox {
-          width: 70%;
+        .eventText {
           margin: 0 10px 0 20px;
           font-size: 0.8em;
+          h3 {
+            font-size: 1.4em;
+            font-weight: bold;
+          }
           h3, p {
             margin-top: 10px;
             @if($screenWidth != none) {
               @media (min-width: $screenWidth) {
                 font-size: 1.5em;
               }
+            }
+          }
+          p {
+            @media (max-width: $small-size) {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
             }
           }
         }
